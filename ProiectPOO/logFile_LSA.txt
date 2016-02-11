@@ -1,0 +1,4322 @@
+LINIE : /*
+LINIE :  #
+LINIE :  #  File        : add_fileformat.h
+LINIE :  #                ( C++ header file - CImg plug-in )
+LINIE :  #
+LINIE :  #  Description : CImg plug-in that adds loading/saving support for a personalized
+LINIE :  #                file format (determined by its extension, here ".foo").
+LINIE :  #                This file is a part of the CImg Library project.
+LINIE :  #                ( http://cimg.sourceforge.net )
+LINIE :  #
+LINIE :  #  Copyright   : David Tschumperle
+LINIE :  #                ( http://tschumperle.users.greyc.fr/ )
+LINIE :  #
+LINIE :  #  License     : CeCILL v2.0
+LINIE :  #                ( http://www.cecill.info/licences/Licence_CeCILL_V2-en.html )
+LINIE :  #
+LINIE :  #  This software is governed by the CeCILL  license under French law and
+LINIE :  #  abiding by the rules of distribution of free software.  You can  use,
+LINIE :  #  modify and/ or redistribute the software under the terms of the CeCILL
+LINIE :  #  license as circulated by CEA, CNRS and INRIA at the following URL
+LINIE :  #  "http://www.cecill.info".
+LINIE :  #
+LINIE :  #  As a counterpart to the access to the source code and  rights to copy,
+LINIE :  #  modify and redistribute granted by the license, users are provided only
+LINIE :  #  with a limited warranty  and the software's author,  the holder of the
+LINIE :  #  economic rights,  and the successive licensors  have only  limited
+LINIE :  #  liability.
+LINIE :  #
+LINIE :  #  In this respect, the user's attention is drawn to the risks associated
+LINIE :  #  with loading,  using,  modifying and/or developing or reproducing the
+LINIE :  #  software by the user in light of its specific status of free software,
+LINIE :  #  that may mean  that it is complicated to manipulate,  and  that  also
+LINIE :  #  therefore means  that it is reserved for developers  and  experienced
+LINIE :  #  professionals having in-depth computer knowledge. Users are therefore
+LINIE :  #  encouraged to load and test the software's suitability as regards their
+LINIE :  #  requirements in conditions enabling the security of their systems and/or
+LINIE :  #  data to be ensured and,  more generally, to use and operate it in the
+LINIE :  #  same conditions as regards security.
+LINIE :  #
+LINIE :  #  The fact that you are presently reading this means that you have had
+LINIE :  #  knowledge of the CeCILL license and that you accept its terms.
+LINIE :  #
+LINIE : */
+LINIE : 
+LINIE : #ifndef cimg_plugin_addfileformat
+LINIE : #define cimg_plugin_addfileformat
+LINIE : 
+LINIE : // These functions load ".foo" filenames
+LINIE : //---------------------------------------
+LINIE : static CImg<T> get_load_foo(const char *filename) {
+LINIE :   std::fprintf(stderr,"Load '%s' here..\n",filename);
+LINIE :   return CImg<T>(512,512,1,3,0).noise(30);
+LINIE : }
+LINIE : 
+LINIE : CImg& load_foo(const char *filename) {
+LINIE :   return get_load_foo(filename).swap(*this);
+LINIE : }
+LINIE : 
+LINIE : // This function saves the instance image into a ".foo" file.
+LINIE : //-----------------------------------------------------------
+LINIE : const CImg& save_foo(const char *filename) const {
+LINIE :   std::fprintf(stderr,"Save '%s' here..\n",filename);
+LINIE :   return *this;
+LINIE : }
+LINIE : 
+LINIE : // The code below allows to add the support for the specified extension.
+LINIE : //---------------------------------------------------------------------
+LINIE : #ifndef cimg_load_plugin
+LINIE : #define cimg_load_plugin(filename) \
+LINIE :   if (!cimg::strncasecmp(cimg::split_filename(filename),"foo",3)) return load_foo(filename);
+LINIE : #endif
+LINIE : #ifndef cimg_save_plugin
+LINIE : #define cimg_save_plugin(filename) \
+LINIE :   if (!cimg::strncasecmp(cimg::split_filename(filename),"foo",3)) return save_foo(filename);
+LINIE : #endif
+LINIE : 
+LINIE : // End of the plugin.
+LINIE : //-------------------
+LINIE : #endif
+LINIE : 
+
+
+file 5 
+add 2 
+fileformat 1 
+header 1 
+cimg 18 
+plug 2 
+in 7 
+description 1 
+that 8 
+adds 1 
+loading 2 
+saving 1 
+support 2 
+for 3 
+personalized 1 
+format 1 
+determined 1 
+by 6 
+its 3 
+extension 2 
+here 3 
+foo 11 
+this 7 
+is 5 
+part 1 
+of 10 
+the 28 
+library 1 
+project 1 
+http 4 
+sourceforge 1 
+net 1 
+copyright 1 
+david 1 
+tschumperle 2 
+users 3 
+greyc 1 
+fr 1 
+license 5 
+cecilL 5 
+www 2 
+cecill 2 
+info 2 
+licences 1 
+licence 1 
+en 1 
+html 1 
+software 5 
+governed 1 
+under 2 
+french 1 
+law 1 
+and 15 
+abiding 1 
+rules 1 
+distribution 1 
+free 2 
+you 4 
+can 1 
+use 2 
+modify 2 
+or 4 
+redistribute 2 
+terms 2 
+as 4 
+circulated 1 
+ceA 1 
+cnrS 1 
+inriA 1 
+at 1 
+following 1 
+urL 1 
+counterpart 1 
+to 9 
+access 1 
+source 1 
+code 2 
+rights 2 
+copy 1 
+granted 1 
+are 3 
+provided 1 
+only 2 
+with 2 
+limited 2 
+warranty 1 
+software's 2 
+author 1 
+holder 1 
+economic 1 
+successive 1 
+licensors 1 
+have 2 
+liability 1 
+respect 1 
+user's 1 
+attention 1 
+drawn 1 
+risks 1 
+associated 1 
+using 1 
+modifying 1 
+developing 1 
+reproducing 1 
+user 1 
+light 1 
+specific 1 
+status 1 
+may 1 
+mean 1 
+it 3 
+complicated 1 
+manipulate 1 
+also 1 
+therefore 2 
+means 2 
+reserved 1 
+developers 1 
+experienced 1 
+professionals 1 
+having 1 
+depth 1 
+computer 1 
+knowledge 2 
+encouraged 1 
+load 9 
+test 1 
+suitability 1 
+regards 2 
+their 2 
+requirements 1 
+conditions 2 
+enabling 1 
+security 2 
+systems 1 
+data 1 
+be 1 
+ensured 1 
+more 1 
+generally 1 
+operate 1 
+same 1 
+fact 1 
+presently 1 
+reading 1 
+had 1 
+accept 1 
+ifndef 3 
+plugin 7 
+addfileformat 2 
+define 3 
+these 1 
+functions 1 
+filenames 1 
+static 1 
+get 2 
+const 5 
+char 3 
+filename 14 
+std 2 
+fprintf 2 
+stderr 2 
+s' 2 
+return 5 
+noise 1 
+swap 1 
+function 1 
+saves 1 
+instance 1 
+image 1 
+into 1 
+save 5 
+below 1 
+allows 1 
+specified 1 
+if 2 
+strncasecmp 2 
+split 2 
+endif 3 
+end 1 
+LINIE : /*
+LINIE :  #
+LINIE :  #  File        : chlpca.cpp
+LINIE :  #                ( C++ source file )
+LINIE :  #
+LINIE :  #  Description : Example of use for the CImg plugin 'plugins/chlpca.h'.
+LINIE :  #                This file is a part of the CImg Library project.
+LINIE :  #                ( http://cimg.sourceforge.net )
+LINIE :  #
+LINIE :  #  Copyright  : Jerome Boulanger
+LINIE :  #               ( http://www.irisa.fr/vista/Equipe/People/Jerome.Boulanger.html )
+LINIE :  #
+LINIE :  #
+LINIE :  #  License     : CeCILL v2.0
+LINIE :  #                ( http://www.cecill.info/licences/Licence_CeCILL_V2-en.html )
+LINIE :  #
+LINIE :  #  This software is governed by the CeCILL  license under French law and
+LINIE :  #  abiding by the rules of distribution of free software.  You can  use,
+LINIE :  #  modify and/ or redistribute the software under the terms of the CeCILL
+LINIE :  #  license as circulated by CEA, CNRS and INRIA at the following URL
+LINIE :  #  "http://www.cecill.info".
+LINIE :  #
+LINIE :  #  As a counterpart to the access to the source code and  rights to copy,
+LINIE :  #  modify and redistribute granted by the license, users are provided only
+LINIE :  #  with a limited warranty  and the software's author,  the holder of the
+LINIE :  #  economic rights,  and the successive licensors  have only  limited
+LINIE :  #  liability.
+LINIE :  #
+LINIE :  #  In this respect, the user's attention is drawn to the risks associated
+LINIE :  #  with loading,  using,  modifying and/or developing or reproducing the
+LINIE :  #  software by the user in light of its specific status of free software,
+LINIE :  #  that may mean  that it is complicated to manipulate,  and  that  also
+LINIE :  #  therefore means  that it is reserved for developers  and  experienced
+LINIE :  #  professionals having in-depth computer knowledge. Users are therefore
+LINIE :  #  encouraged to load and test the software's suitability as regards their
+LINIE :  #  requirements in conditions enabling the security of their systems and/or
+LINIE :  #  data to be ensured and,  more generally, to use and operate it in the
+LINIE :  #  same conditions as regards security.
+LINIE :  #
+LINIE :  #  The fact that you are presently reading this means that you have had
+LINIE :  #  knowledge of the CeCILL license and that you accept its terms.
+LINIE :  #
+LINIE : */
+LINIE : 
+LINIE : // Define some useful macros.
+LINIE : 
+LINIE : //! Some loops
+LINIE : #define cimg_for_step1(bound,i,step) for (int i = 0; i<(int)(bound); i+=step)
+LINIE : #define cimg_for_stepX(img,x,step) cimg_for_step1((img)._width,x,step)
+LINIE : #define cimg_for_stepY(img,y,step) cimg_for_step1((img)._height,y,step)
+LINIE : #define cimg_for_stepZ(img,z,step) cimg_for_step1((img)._depth,z,step)
+LINIE : #define cimg_for_stepXY(img,x,y,step) cimg_for_stepY(img,y,step) cimg_for_stepX(img,x,step)
+LINIE : #define cimg_for_stepXYZ(img,x,y,step) cimg_for_stepZ(img,z,step) cimg_for_stepY(img,y,step) cimg_for_stepX(img,x,step)
+LINIE : 
+LINIE : //! Loop for point J(xj,yj) in the neighborhood of a point I(xi,yi) of size (2*rx+1,2*ry+1)
+LINIE : /**
+LINIE :    Point J is kept inside the boundaries of the image img.
+LINIE :    example of summing the pixels values in a neighborhood 11x11
+LINIE :    cimg_forXY(img,xi,yi) cimg_for_windowXY(img,xi,yi,xj,yj,5,5) dest(yi,yi) += src(xj,yj);
+LINIE : **/
+LINIE : #define cimg_forXY_window(img,xi,yi,xj,yj,rx,ry)                        \
+LINIE : for (int yi0=cimg::max(0,yi-ry), yi1=cimg::min(yi+ry,(int)img.height()-1), yj=yi0;yj<=yi1;++yj) \
+LINIE : for (int xi0=cimg::max(0,xi-rx), xi1=cimg::min(xi+rx,(int)img.width()-1), xj=xi0;xj<=xi1;++xj)
+LINIE : 
+LINIE : #define cimg_forXYZ_window(img,xi,yi,zi,xj,yj,zj,rx,ry,rz)                                      \
+LINIE : for (int zi0=cimg::max(0,zi-rz), zi1=cimg::min(zi+rz,(int)img.depth()-1) , zj=zi0;zj<=zi1;++zj) \
+LINIE : for (int yi0=cimg::max(0,yi-ry), yi1=cimg::min(yi+ry,(int)img.height()-1), yj=yi0;yj<=yi1;++yj) \
+LINIE : for (int xi0=cimg::max(0,xi-rx), xi1=cimg::min(xi+rx,(int)img.width()-1) , xj=xi0;xj<=xi1;++xj)
+LINIE : 
+LINIE : //! Crop a patch in the image around position x,y,z and return a column vector
+LINIE : /**
+LINIE :    \param x x-coordinate of the center of the patch
+LINIE :    \param y y-coordinate of the center of the patch
+LINIE :    \param z z-coordinate of the center of the patch
+LINIE :    \param px the patch half width
+LINIE :    \param px the patch half height
+LINIE :    \param px the patch half depth
+LINIE :    \return img.get_crop(x0,y0,z0,x1,y1,z1).unroll('y');
+LINIE : **/
+LINIE : CImg<T> get_patch(int x, int y, int z,
+LINIE :                   int px, int py, int pz) const {
+LINIE :   if (depth() == 1){
+LINIE :     const int x0 = x - px, y0 = y - py, x1 = x + px, y1 = y + py;
+LINIE :     return get_crop(x0, y0, x1, y1).unroll('y');
+LINIE :   } else {
+LINIE :     const int
+LINIE :       x0 = x - px, y0 = y - py, z0 = z - pz,
+LINIE :       x1 = x + px, y1 = y + py, z1 = z + pz;
+LINIE :     return get_crop(x0, y0, z0, x1, y1, z1).unroll('y');
+LINIE :   }
+LINIE : }
+LINIE : 
+LINIE : //! Extract a local patch dictionnary around point xi,yi,zi
+LINIE : CImg<T> get_patch_dictionnary(const int xi, const int yi, const int zi,
+LINIE :                               const int px, const int py, const int pz,
+LINIE :                               const int wx, const int wy, const int wz,
+LINIE :                               int & idc) const {
+LINIE :   const int
+LINIE :     n = (2*wx+1) * (2*wy+1) * (2 * (depth()==1?0:wz) + 1),
+LINIE :     d = (2*px+1) * (2*py+1) * (2 * (depth()==1?0:px) + 1) * spectrum();
+LINIE :   CImg<> S(n, d);
+LINIE :   int idx = 0;
+LINIE :   if (depth() == 1) {
+LINIE :     cimg_forXY_window((*this), xi, yi, xj, yj, wx, wy){
+LINIE :       CImg<T> patch = get_patch(xj, yj, 0, px, py, 1);
+LINIE :       cimg_forY(S,y) S(idx,y) = patch(y);
+LINIE :       if (xj==xi && yj==yi) idc = idx;
+LINIE :       idx++;
+LINIE :     }
+LINIE :   } else  {
+LINIE :     cimg_forXYZ_window((*this), xi,yi,zi,xj,yj,zj,wx,wy,wz){
+LINIE :       CImg<T> patch = get_patch(xj, yj, zj, px, py, pz);
+LINIE :       cimg_forY(S,y) S(idx,y) = patch(y);
+LINIE :       if (xj==xi && yj==yi && zj==zi) idc = idx;
+LINIE :       idx++;
+LINIE :     }
+LINIE :   }
+LINIE :   S.columns(0, idx - 1);
+LINIE :   return S;
+LINIE : }
+LINIE : 
+LINIE : //! Add a patch to the image
+LINIE : /**
+LINIE :    \param x x-coordinate of the center of the patch
+LINIE :    \param y y-coordinate of the center of the patch
+LINIE :    \param z z-coordinate of the center of the patch
+LINIE :    \param img the patch as a 1D column vector
+LINIE :    \param px the patch half width
+LINIE :    \param px the patch half height
+LINIE :    \param px the patch half depth
+LINIE : **/
+LINIE : CImg<T> & add_patch(const int xi, const int yi, const int zi,
+LINIE :                     const CImg<T> & patch,
+LINIE :                     const int px, const int py, const int pz) {
+LINIE :   const int
+LINIE :     x0 = xi - px, y0 = yi - py, z0 = (depth() == 1 ? 0 : zi - pz),
+LINIE :     sx = 2 * px + 1, sy = 2 * py + 1, sz = (depth() == 1 ? 1 : 2 * pz +1);
+LINIE :   draw_image(x0, y0, z0, 0, patch.get_resize(sx, sy, sz, spectrum(), -1), -1);
+LINIE :   return (*this);
+LINIE : }
+LINIE : 
+LINIE : //! Add a constant patch to the image
+LINIE : /**
+LINIE :    \param x x-coordinate of the center of the patch
+LINIE :    \param y y-coordinate of the center of the patch
+LINIE :    \param z z-coordinate of the center of the patch
+LINIE :    \param value in the patch
+LINIE :    \param px the patch half width
+LINIE :    \param px the patch half height
+LINIE :    \param px the patch half depth
+LINIE : **/
+LINIE : CImg<T> & add_patch(const int xi, const int yi, const int zi, const T value,
+LINIE :                     const int px, const int py, const int pz) {
+LINIE :   const int
+LINIE :     x0 = xi - px, y0 = yi - py, z0 = (depth() == 1 ? 0 : zi - pz),
+LINIE :     x1 = xi + px, y1 = yi + py, z1 = (depth() == 1 ? 0 : zi + pz);
+LINIE :   draw_rectangle(x0, y0, z0, 0, x1, y1, z1, spectrum()-1, value, -1);
+LINIE : return (*this);
+LINIE : }
+LINIE : 
+LINIE : //! CHLPCA denoising from the PhD thesis of Hu Haijuan
+LINIE : /**
+LINIE :    \param px the patch half width
+LINIE :    \param px the patch half height
+LINIE :    \param px the patch half depth
+LINIE :    \param wx the training region half width
+LINIE :    \param wy the training region half height
+LINIE :    \param wz the training region half depth
+LINIE :    \param nstep the subsampling of the image domain
+LINIE :    \param nsim the number of patches used for training as a factor of the patch size
+LINIE :    \param lambda_min the threshold on the eigen values of the PCA for dimension reduction
+LINIE :    \param threshold the threshold on the value of the coefficients
+LINIE :    \param pca_use_svd if true use the svd approach to perform the pca otherwise use the covariance method
+LINIE :    \note please cite the PhD thesis of Hu Haijuan http://www.univ-ubs.fr/soutenance-de-these-hu-haijuan-337653.kjsp?RH=1318498222799
+LINIE :  **/
+LINIE : CImg<T> get_chlpca(const int px, const int py, const int pz,
+LINIE :                        const int wx, const int wy, const int wz,
+LINIE :                        const int nstep, const float nsim,
+LINIE :                        const float lambda_min, const float threshold,
+LINIE :                        const float noise_std,  const bool pca_use_svd) const {
+LINIE :   const int
+LINIE :     nd = (2*px+1) * (2*py+1) * (depth()==1?1:2*pz+1) * spectrum(),
+LINIE :     K = nsim * nd;
+LINIE : #ifdef DEBUG
+LINIE :   fprintf(stderr,"chlpca: p:%dx%dx%d,w:%dx%dx%d,nd:%d,K:%d\n",
+LINIE :           2*px+1,2*py+1,2*pz+1,2*wx+1,2*wy+1,2*wz+1,nd,K);
+LINIE : #endif
+LINIE :   float sigma;
+LINIE :   if (noise_std < 0) sigma = std::sqrt(variance_noise());
+LINIE :   else sigma = noise_std;
+LINIE :   CImg<T> dest(*this), count(*this);
+LINIE :   dest.fill(0);
+LINIE :   count.fill(0);
+LINIE :   cimg_for_stepZ(*this,zi,(depth()==1||pz==0)?1:nstep){
+LINIE : #ifdef cimg_use_openmp
+LINIE : #pragma omp parallel for
+LINIE : #endif
+LINIE :     cimg_for_stepXY((*this),xi,yi,nstep){
+LINIE :       // extract the training region X
+LINIE :       int idc = 0;
+LINIE :       CImg<T> S = get_patch_dictionnary(xi,yi,zi,px,py,pz,wx,wy,wz,idc);
+LINIE :       // select the K most similar patches within the training set
+LINIE :       CImg<T> Sk(S);
+LINIE :       CImg<unsigned int> index(S.width());
+LINIE :       if (K < Sk.width() - 1){
+LINIE :         CImg<T> mse(S.width());
+LINIE :         CImg<unsigned int> perms;
+LINIE :         cimg_forX(S,x){mse(x) = S.get_column(idc).MSE(S.get_column(x)); }
+LINIE :         mse.sort(perms,true);
+LINIE :         cimg_foroff(perms,i) {
+LINIE :           cimg_forY(S,j) Sk(i,j) = S(perms(i),j);
+LINIE :           index(perms(i)) = i;
+LINIE :         }
+LINIE :         Sk.columns(0, K);
+LINIE :         perms.threshold(K);
+LINIE :       } else {
+LINIE :         cimg_foroff(index,i) index(i)=i;
+LINIE :       }
+LINIE :       // centering the patches
+LINIE :       CImg<T> M(1, Sk.height(), 1, 1, 0);
+LINIE :       cimg_forXY(Sk,x,y) { M(y) += Sk(x,y); }
+LINIE :       M /= (T)Sk.width();
+LINIE :       cimg_forXY(Sk,x,y) { Sk(x,y) -= M(y); }
+LINIE :       // compute the principal component of the training set S
+LINIE :       CImg<T> P, lambda;
+LINIE :       if (pca_use_svd) {
+LINIE :         CImg<T> V;
+LINIE :         Sk.get_transpose().SVD(V,lambda,P,100);
+LINIE :       } else {
+LINIE :         (Sk * Sk.get_transpose()).symmetric_eigen(lambda, P);
+LINIE :         lambda.sqrt();
+LINIE :       }
+LINIE :       // dimension reduction
+LINIE :       int s = 0;
+LINIE :       const T tx = std::sqrt((double)Sk.width()-1.0) * lambda_min * sigma;
+LINIE :       while((lambda(s) > tx) && (s < ((int)lambda.size() - 1))) { s++; }
+LINIE :       P.columns(0,s);
+LINIE :       // project all the patches on the basis (compute scalar product)
+LINIE :       Sk = P.get_transpose() * Sk;
+LINIE :       // threshold the coefficients
+LINIE :       if (threshold > 0) { Sk.threshold(threshold, 1); }
+LINIE :       // project back to pixel space
+LINIE :       Sk =  P * Sk;
+LINIE :       // recenter the patches
+LINIE :       cimg_forXY(Sk,x,y) { Sk(x,y) += M(y); }
+LINIE :       int j = 0;
+LINIE :       cimg_forXYZ_window((*this),xi,yi,zi,xj,yj,zj,wx,wy,wz){
+LINIE :         const int id = index(j);
+LINIE :         if (id < Sk.width()) {
+LINIE :           dest.add_patch(xj, yj, zj, Sk.get_column(id), px, py, pz);
+LINIE :           count.add_patch(xj, yj, zj, (T)1, px, py, pz);
+LINIE :         }
+LINIE :         j++;
+LINIE :       }
+LINIE :     }
+LINIE :   }
+LINIE :   cimg_foroff(dest, i) {
+LINIE :     if(count(i) != 0) { dest(i) /= count(i); }
+LINIE :     else { dest(i) = (*this)(i); }
+LINIE :   }
+LINIE :   return dest;
+LINIE : }
+LINIE : 
+LINIE : //! CHLPCA denoising from the PhD thesis of Hu Haijuan
+LINIE : /**
+LINIE :    \param px the patch half width
+LINIE :    \param px the patch half height
+LINIE :    \param px the patch half depth
+LINIE :    \param wx the training region half width
+LINIE :    \param wy the training region half height
+LINIE :    \param wz the training region half depth
+LINIE :    \param nstep the subsampling of the image domain
+LINIE :    \param nsim the number of patches used for training as a factor of the patch size
+LINIE :    \param lambda_min the threshold on the eigen values of the PCA for dimension reduction
+LINIE :    \param threshold the threshold on the value of the coefficients
+LINIE :    \param pca_use_svd if true use the svd approach to perform the pca otherwise use the covariance method
+LINIE :    \note please cite the PhD thesis of Hu Haijuan http://www.univ-ubs.fr/soutenance-de-these-hu-haijuan-337653.kjsp?RH=1318498222799
+LINIE :  **/
+LINIE : CImg<T> & chlpca(const int px, const int py, const int pz,
+LINIE :                  const int wx, const int wy, const int wz,
+LINIE :                  const int nstep, const float nsim,
+LINIE :                  const float lambda_min, const float threshold,
+LINIE :                  const float noise_std,  const bool pca_use_svd)  {
+LINIE :   (*this) = get_chlpca(px, py, pz, wx, wy, wz, nstep, nsim, lambda_min,
+LINIE :                                threshold, noise_std, pca_use_svd);
+LINIE :   return (*this);
+LINIE : }
+LINIE : 
+LINIE : //! CHLPCA denoising from the PhD thesis of Hu Haijuan
+LINIE : /**
+LINIE :    \param p the patch half size
+LINIE :    \param w the training region half size
+LINIE :    \param nstep the subsampling of the image domain
+LINIE :    \param nsim the number of patches used for training as a factor of the patch size
+LINIE :    \param lambda_min the threshold on the eigen values of the PCA for dimension reduction
+LINIE :    \param threshold the threshold on the value of the coefficients
+LINIE :    \param pca_use_svd if true use the svd approach to perform the pca otherwise use the covariance method
+LINIE :    \note please cite the PhD thesis of Hu Haijuan http://www.univ-ubs.fr/soutenance-de-these-hu-haijuan-337653.kjsp?RH=1318498222799
+LINIE :  **/
+LINIE : CImg<T> get_chlpca(const int p=3, const int w=10,
+LINIE :                    const int nstep=5, const float nsim=10,
+LINIE :                    const float lambda_min=2, const float threshold = -1,
+LINIE :                    const float noise_std=-1, const bool pca_use_svd=true) const {
+LINIE :   if (depth()==1) return get_chlpca(p, p, 0, w, w, 0, nstep, nsim, lambda_min,
+LINIE :                                     threshold, noise_std, pca_use_svd);
+LINIE :   else return get_chlpca(p, p, p, w, w, w, nstep, nsim, lambda_min,
+LINIE :                          threshold, noise_std, pca_use_svd);
+LINIE : }
+LINIE : 
+LINIE : CImg<T> chlpca(const int p=3, const int w=10,
+LINIE :                const int nstep=5, const float nsim=10,
+LINIE :                const float lambda_min=2, const float threshold = -1,
+LINIE :                const float noise_std=-1, const bool pca_use_svd=true) {
+LINIE :   (*this) = get_chlpca(p, w, nstep, nsim, lambda_min,
+LINIE :                        threshold, noise_std, pca_use_svd);
+LINIE :   return (*this);
+LINIE : }
+LINIE : 
+
+
+file 3 
+chlpca 11 
+cpp 1 
+source 2 
+description 1 
+example 2 
+of 54 
+use 22 
+for 33 
+the 129 
+cimg 68 
+plugin 1 
+'plugins 1 
+h' 1 
+this 18 
+is 6 
+part 1 
+library 1 
+project 3 
+http 7 
+sourceforge 1 
+net 1 
+copyright 1 
+jerome 2 
+boulanger 2 
+www 6 
+irisa 1 
+fr 4 
+vista 1 
+equipe 1 
+people 1 
+html 2 
+license 5 
+cecilL 5 
+cecill 2 
+info 2 
+licences 1 
+licence 1 
+en 1 
+software 5 
+governed 1 
+by 5 
+under 2 
+french 1 
+law 1 
+and 16 
+abiding 1 
+rules 1 
+distribution 1 
+free 2 
+you 4 
+can 1 
+modify 2 
+or 4 
+redistribute 2 
+terms 2 
+as 8 
+circulated 1 
+ceA 1 
+cnrS 1 
+inriA 1 
+at 1 
+following 1 
+urL 1 
+counterpart 1 
+to 14 
+access 1 
+code 1 
+rights 2 
+copy 1 
+granted 1 
+users 2 
+are 3 
+provided 1 
+only 2 
+with 2 
+limited 2 
+warranty 1 
+software's 2 
+author 1 
+holder 1 
+economic 1 
+successive 1 
+licensors 1 
+have 2 
+liability 1 
+in 9 
+respect 1 
+user's 1 
+attention 1 
+drawn 1 
+risks 1 
+associated 1 
+loading 1 
+using 1 
+modifying 1 
+developing 1 
+reproducing 1 
+user 1 
+light 1 
+its 2 
+specific 1 
+status 1 
+that 7 
+may 1 
+mean 1 
+it 3 
+complicated 1 
+manipulate 1 
+also 1 
+therefore 2 
+means 2 
+reserved 1 
+developers 1 
+experienced 1 
+professionals 1 
+having 1 
+depth 21 
+computer 1 
+knowledge 2 
+encouraged 1 
+load 1 
+test 1 
+suitability 1 
+regards 2 
+their 2 
+requirements 1 
+conditions 2 
+enabling 1 
+security 2 
+systems 1 
+data 1 
+be 1 
+ensured 1 
+more 1 
+generally 1 
+operate 1 
+same 1 
+fact 1 
+presently 1 
+reading 1 
+had 1 
+accept 1 
+define 9 
+some 2 
+useful 1 
+macros 1 
+loops 1 
+step 19 
+bound 2 
+int 74 
+stepX 3 
+img 25 
+width 16 
+stepY 3 
+height 11 
+stepZ 3 
+stepxY 2 
+stepxyZ 1 
+loop 1 
+point 4 
+xj 20 
+yj 20 
+neighborhood 2 
+xi 31 
+yi 33 
+size 7 
+rx 7 
+ry 7 
+kept 1 
+inside 1 
+boundaries 1 
+image 8 
+summing 1 
+pixels 1 
+values 4 
+forxY 6 
+windowxY 1 
+dest 8 
+src 1 
+window 5 
+max 5 
+min 17 
+forxyZ 3 
+zi 19 
+zj 10 
+rz 3 
+crop 4 
+patch 49 
+around 2 
+position 1 
+return 12 
+column 5 
+vector 2 
+param 49 
+coordinate 9 
+center 9 
+px 39 
+half 23 
+get 21 
+unroll 3 
+'y' 3 
+py 23 
+pz 20 
+const 75 
+if 14 
+else 7 
+extract 2 
+local 1 
+dictionnary 3 
+wx 12 
+wy 12 
+wz 11 
+idc 6 
+spectrum 4 
+idx 8 
+forY 3 
+columns 3 
+add 6 
+sx 2 
+sy 2 
+sz 2 
+draw 2 
+resize 1 
+constant 1 
+value 6 
+rectangle 1 
+chlpcA 3 
+denoising 3 
+from 3 
+phD 6 
+thesis 6 
+hu 9 
+haijuan 9 
+training 13 
+region 8 
+nstep 13 
+subsampling 3 
+domain 3 
+nsim 12 
+number 3 
+patches 7 
+used 3 
+factor 3 
+lambda 18 
+threshold 22 
+on 7 
+eigen 4 
+pcA 3 
+dimension 4 
+reduction 4 
+coefficients 4 
+pca 15 
+svd 15 
+true 6 
+approach 3 
+perform 3 
+otherwise 3 
+covariance 3 
+method 3 
+note 3 
+please 3 
+cite 3 
+univ 3 
+ubs 3 
+soutenance 3 
+de 3 
+these 3 
+kjsp?rH 3 
+float 17 
+noise 11 
+std 12 
+bool 4 
+nd 4 
+ifdef 2 
+debuG 1 
+fprintf 1 
+stderr 1 
+dx 4 
+endif 2 
+sigma 4 
+sqrt 3 
+variance 1 
+count 5 
+fill 2 
+openmp 1 
+pragma 1 
+omp 1 
+parallel 1 
+select 1 
+most 1 
+similar 1 
+within 1 
+set 2 
+sk 23 
+unsigned 2 
+index 5 
+mse 3 
+perms 6 
+forX 1 
+msE 1 
+sort 1 
+foroff 3 
+centering 1 
+compute 2 
+principal 1 
+component 1 
+transpose 3 
+svD 1 
+symmetric 1 
+tx 2 
+double 1 
+while 1 
+all 1 
+basis 1 
+scalar 1 
+product 1 
+back 1 
+pixel 1 
+space 1 
+recenter 1 
+id 3 
+LINIE : /*
+LINIE :  #
+LINIE :  #  File        : vrml.h
+LINIE :  #                ( C++ header file - CImg plug-in )
+LINIE :  #
+LINIE :  #  Description : CImg plugin that provide functions to load/save VRML files.
+LINIE :  #                This file is a part of the CImg Library project.
+LINIE :  #                ( http://cimg.sourceforge.net )
+LINIE :  #
+LINIE :  #  Copyright   : Greg Rami
+LINIE :  #                ( greg.rami36 (at) gmail.com )
+LINIE :  #
+LINIE :  #  License     : CeCILL v2.0
+LINIE :  #                ( http://www.cecill.info/licences/Licence_CeCILL_V2-en.html )
+LINIE :  #
+LINIE :  #  This software is governed by the CeCILL  license under French law and
+LINIE :  #  abiding by the rules of distribution of free software.  You can  use,
+LINIE :  #  modify and/ or redistribute the software under the terms of the CeCILL
+LINIE :  #  license as circulated by CEA, CNRS and INRIA at the following URL
+LINIE :  #  "http://www.cecill.info".
+LINIE :  #
+LINIE :  #  As a counterpart to the access to the source code and  rights to copy,
+LINIE :  #  modify and redistribute granted by the license, users are provided only
+LINIE :  #  with a limited warranty  and the software's author,  the holder of the
+LINIE :  #  economic rights,  and the successive licensors  have only  limited
+LINIE :  #  liability.
+LINIE :  #
+LINIE :  #  In this respect, the user's attention is drawn to the risks associated
+LINIE :  #  with loading,  using,  modifying and/or developing or reproducing the
+LINIE :  #  software by the user in light of its specific status of free software,
+LINIE :  #  that may mean  that it is complicated to manipulate,  and  that  also
+LINIE :  #  therefore means  that it is reserved for developers  and  experienced
+LINIE :  #  professionals having in-depth computer knowledge. Users are therefore
+LINIE :  #  encouraged to load and test the software's suitability as regards their
+LINIE :  #  requirements in conditions enabling the security of their systems and/or
+LINIE :  #  data to be ensured and,  more generally, to use and operate it in the
+LINIE :  #  same conditions as regards security.
+LINIE :  #
+LINIE :  #  The fact that you are presently reading this means that you have had
+LINIE :  #  knowledge of the CeCILL license and that you accept its terms.
+LINIE :  #
+LINIE : */
+LINIE : 
+LINIE : /*-----------------------------------------------------------------------------------
+LINIE : 
+LINIE :  IMPORTANT NOTE :
+LINIE : 
+LINIE :  You *need* to include the following lines in your own code to use this plugin :
+LINIE : 
+LINIE :  #include <vector>
+LINIE :  #include <string>
+LINIE :  #include <sstream>
+LINIE :  #include <algorithm>
+LINIE : 
+LINIE : ------------------------------------------------------------------------------------*/
+LINIE : 
+LINIE : #ifndef cimg_plugin_vrml
+LINIE : #define cimg_plugin_vrml
+LINIE : 
+LINIE : //! Load a 3d object from a .VRML file.
+LINIE : template<typename tf, typename tc>
+LINIE : CImg<T>& load_vrml(const char *const filename, CImgList<tf>& primitives, CImgList<tc>& colors) {
+LINIE :   return _load_vrml(0,filename,primitives,colors);
+LINIE : }
+LINIE : 
+LINIE : //! Load a 3d object from a .VRML file.
+LINIE : template<typename tf, typename tc>
+LINIE : static CImg<T> get_load_vrml(const char *const filename, CImgList<tf>& primitives, CImgList<tc>& colors) {
+LINIE :   return CImg<T>().load_vrml(filename,primitives,colors);
+LINIE : }
+LINIE : 
+LINIE : //! Load a 3d object from a .VRML file.
+LINIE : template<typename tf, typename tc>
+LINIE : CImg<T>& load_vrml(std::FILE *const file, CImgList<tf>& primitives, CImgList<tc>& colors) {
+LINIE :   return _load_vrml(file,0,primitives,colors);
+LINIE : }
+LINIE : 
+LINIE : //! Load a 3d object from a .VRML file.
+LINIE : template<typename tf, typename tc>
+LINIE : static CImg<T> get_load_vrml(std::FILE *const file, CImgList<tf>& primitives, CImgList<tc>& colors) {
+LINIE :   return CImg<T>().load_vrml(file,primitives,colors);
+LINIE : }
+LINIE : 
+LINIE : //! Load a 3d object from a .VRML file (internal).
+LINIE : template<typename tf, typename tc>
+LINIE : CImg<T>& _load_vrml(std::FILE *const file, const char *const filename,CImgList<tf>& primitives, CImgList<tc>& colors) {
+LINIE :   if (!file && !filename)
+LINIE :     throw CImgArgumentException(_cimg_instance
+LINIE :                                 "load_vrml() : Specified filename is (null).",
+LINIE :                                 cimg_instance);
+LINIE :   std::FILE *const nfile = file?file:cimg::fopen(filename,"r");
+LINIE : 
+LINIE :   char line[1024] = { 0 };
+LINIE :   int err;
+LINIE : 
+LINIE :   // Skip comments, and read the first node.
+LINIE :   do { err = std::fscanf(nfile,"%65535[^\n] ",line); } while (!err || (err==1 && *line=='#'));
+LINIE : 
+LINIE :   // Check for a first valid vrml valid node.
+LINIE :   if (cimg::strncasecmp(line,"Shape",5) &&
+LINIE :       cimg::strncasecmp(line,"Transform",9) &&
+LINIE :       cimg::strncasecmp(line,"NavigationInfo",14) &&
+LINIE :       cimg::strncasecmp(line,"Billboard",9)) {
+LINIE :     if (!file) cimg::fclose(nfile);
+LINIE :     throw CImgIOException(_cimg_instance
+LINIE :                           "load_vrml() : VRML nodes not found in file '%s'.",
+LINIE :                           cimg_instance,filename?filename:"(FILE*)");
+LINIE :   }
+LINIE : 
+LINIE :   // Look for the Shape node (as we do not manage the treatment for the other nodes yet).
+LINIE :   if (cimg::strncasecmp(line,"Shape",5)) {
+LINIE :     while (cimg::strncasecmp(line,"Shape",5) && !std::feof(nfile)) err = std::fscanf(nfile,"%1023[^\n] ",line);
+LINIE :     if (std::feof(nfile)) {
+LINIE :       if (!file) cimg::fclose(nfile);
+LINIE :       throw CImgIOException(_cimg_instance
+LINIE :                             "load_vrml() : Shape node not found in file '%s'.",
+LINIE :                             cimg_instance,filename?filename:"(FILE*)");
+LINIE :     }
+LINIE :   }
+LINIE : 
+LINIE :   // Look for either geometry or appearance node.
+LINIE :   while (cimg::strncasecmp(line,"geometry",8) && cimg::strncasecmp(line,"appearance",10) && !std::feof(nfile)) err = std::fscanf(nfile,"%1023[^\n] ",line);
+LINIE :   if (std::feof(nfile)) { // If none of these nodes are defined.
+LINIE :     if (!file) cimg::fclose(nfile);
+LINIE :     throw CImgIOException(_cimg_instance
+LINIE :                           "load_vrml() : Geometry and appearance nodes not found in file '%s'.",
+LINIE :                           cimg_instance,filename?filename:"(FILE*)");
+LINIE :   }
+LINIE : 
+LINIE :   std::vector<T> listePoints; // Intermediate list containing the points of the whole object.
+LINIE :   primitives.assign();
+LINIE :   colors.assign();
+LINIE :   int nbPointsTotal = 0, nbPrimitives = 0; // Count the number of points of the whole object and the number of primitives.
+LINIE :   float r = 0.78f, g = 0.78f, b = 0.78f; // RGB level of the object, the object is gray by default.
+LINIE :   bool colorDefined = true, multipleColors = false, textureTest = false; // Boolean used to know if a color is defined for an object, if this object has multiple colors or if the object has a texture
+LINIE :   char textureFile[1024] = { 0 }; // Variable containing the name of the image used as a texture
+LINIE : 
+LINIE :   while (!std::feof(nfile)) {
+LINIE :     char type[1024] = { 0 }, textureFileTemp[1024] = { 0 };
+LINIE :     colorDefined = true;
+LINIE :     if (!cimg::strncasecmp(line,"geometry",8)) {       // We are at the geometry node
+LINIE :       std::sscanf(line,"geometry %s",type);            // We are looking for the type of geometry to draw
+LINIE :       const CImg<float> coords = CImg<float>::empty(); // CImg used for the texturization of an object
+LINIE :       CImgList<tc> colorsTextured;                     // CImgList used for the texturization of the color of an object
+LINIE :       CImgList<tf> primitivesTemp;                     // Intermediate CImgList used to update the primitives of the whole object
+LINIE : 
+LINIE :       if (!cimg::strncasecmp(type,"Box",3)) { // If the object to draw is a box
+LINIE :         while (cimg::strncasecmp(line,"size",4) && !std::feof(nfile)) // We are looking for the size of the box
+LINIE :           err = std::fscanf(nfile,"%1023[^\n] ",line);
+LINIE : 
+LINIE :         if (std::feof(nfile)) { // If no size is specified
+LINIE :           if (!file) cimg::fclose(nfile);
+LINIE :           throw CImgIOException(_cimg_instance
+LINIE :                                 "load_vrml() : size of box not defined in file '%s'.",
+LINIE :                                 cimg_instance, filename?filename:"(FILE*)");
+LINIE :         }
+LINIE : 
+LINIE :         float X = 0, Y = 0, Z = 0; // The width, height and depth of the box
+LINIE :         if ((err = std::sscanf(line,"size %f %f %f[^\n] ",&X,&Y,&Z))!=3 && (err = std::sscanf(line,"size %f,%f,%f[^\n] ",&X,&Y,&Z))!=3) {
+LINIE :           if (!file) cimg::fclose(nfile);
+LINIE :           throw CImgIOException(_cimg_instance
+LINIE :                                 "load_vrml() : Failed to read box size in file '%s'.",
+LINIE :                                 cimg_instance,filename?filename:"(FILE*)");
+LINIE :         }
+LINIE :         const CImg<T> pointsTemp = CImg<T>::box3d(primitivesTemp,(T)X,(T)Y,(T)Z); // We generate the primitives and the points of the box
+LINIE : 
+LINIE :         nbPrimitives = primitivesTemp.size(); // We save the number of primitives of the object
+LINIE : 
+LINIE :         if (textureTest) { // If the object has a texture
+LINIE :           const CImg<float> texture(textureFile);                                      // We put the image used as a texture into a CImg object
+LINIE :           colorsTextured.insert(primitivesTemp.size(),CImg<unsigned char>::vector(0,50,250));   // We initialize the colorsTextured list
+LINIE :           pointsTemp.texturize_object3d(primitivesTemp,colorsTextured,texture,coords); // We texturize the object
+LINIE :           nbPrimitives = 0;
+LINIE :         }
+LINIE : 
+LINIE :         if(nbPointsTotal) { // If there are already some objects in the scene
+LINIE :           for (int j=0;j<(int)primitivesTemp.size();j++) {
+LINIE :             for(int i=0;i<4;i++)
+LINIE :               primitivesTemp(j).at(i) += (tf)nbPointsTotal; // We shift the indices in the primitives to designate the right points
+LINIE :           }
+LINIE :         }
+LINIE :         primitives.push_back(primitivesTemp); // We add the primitives of the box to the general primitives variable
+LINIE :         for(int i=0;i<(int)pointsTemp.size()/3;++i) { // We add the points into the temporary list in the right order
+LINIE :           listePoints.push_back((T)pointsTemp.at(i));
+LINIE :           listePoints.push_back((T)pointsTemp.at(i+8));
+LINIE :           listePoints.push_back((T)pointsTemp.at(i+16));
+LINIE :         }
+LINIE :         nbPointsTotal += pointsTemp.size()/3; // We increase the number of points of the whole object
+LINIE :       }
+LINIE :       else if(!cimg::strncasecmp(type,"Sphere",6)) { // If the object to draw is a sphere
+LINIE :         while(cimg::strncasecmp(line,"radius",6) && !std::feof(nfile))
+LINIE :           err = std::fscanf(nfile,"%1023[^\n] ",line);
+LINIE : 
+LINIE :         if(std::feof(nfile)) {
+LINIE :           if (!file)
+LINIE :             cimg::fclose(nfile);
+LINIE :           throw CImgIOException(_cimg_instance "load_vrml() : radius of sphere not defined in file '%s'.",cimg_instance, filename?filename:"(FILE*)");
+LINIE :         }
+LINIE : 
+LINIE :         float R = 0;
+LINIE :         if ((err = std::sscanf(line,"radius %f[^\n] ",&R))!=1) { // We get the radius of the sphere
+LINIE :           if (!file)
+LINIE :             cimg::fclose(nfile);
+LINIE :           throw CImgIOException(_cimg_instance "load_vrml() : Failed to read sphere radius in file '%s'.",cimg_instance,filename?filename:"(FILE*)");
+LINIE :         }
+LINIE :         const CImg<T> pointsTemp = CImg<T>::sphere3d(primitivesTemp,(T)R); // Compute the necessary points and primitives for a sphere of radius R
+LINIE : 
+LINIE :         nbPrimitives = primitivesTemp.size(); // We get the number of primitives to used on the attribution of a color, in case no specific color is defined
+LINIE : 
+LINIE :         if(textureTest) { // If the object has a texture
+LINIE :           const CImg<float> texture(textureFile);                                      // We put the image used as a texture into a CImg object
+LINIE :           colorsTextured.insert(primitivesTemp.size(),CImg<unsigned char>::vector(0,50,250));   // We initialize the colorsTextured list
+LINIE :           pointsTemp.texturize_object3d(primitivesTemp,colorsTextured,texture,coords); // We texturize the object
+LINIE :           nbPrimitives = 0; // We set to 0 because there is no color to use
+LINIE :         }
+LINIE : 
+LINIE :         if(nbPointsTotal) { // If there are already some objects in the scene
+LINIE :           for (int j=0;j<(int)primitivesTemp.size();j++) {
+LINIE :             for(int i=0;i<3;i++)
+LINIE :               primitivesTemp(j).at(i) += (tf)nbPointsTotal;
+LINIE :           }
+LINIE :         }
+LINIE : 
+LINIE :         primitives.push_back(primitivesTemp);
+LINIE :         for(int i=0;i<(int)pointsTemp.size()/3;++i) {
+LINIE :           listePoints.push_back((T)pointsTemp.at(i));
+LINIE :           listePoints.push_back((T)pointsTemp.at(i+pointsTemp.size()/3));
+LINIE :           listePoints.push_back((T)pointsTemp.at(i+2*pointsTemp.size()/3));
+LINIE :         }
+LINIE :         nbPointsTotal += pointsTemp.size()/3;
+LINIE :       }
+LINIE :       else if(!cimg::strncasecmp(type,"Cone",4)) { // If the object to draw is a cone
+LINIE :         while(cimg::strncasecmp(line,"bottomRadius",12) && !std::feof(nfile) && cimg::strncasecmp(line,"height",6))
+LINIE :           err = std::fscanf(nfile,"%1023[^\n] ",line);
+LINIE :         float R = 0, H = 0;
+LINIE :         if(std::feof(nfile)) {
+LINIE :           if (!file)
+LINIE :             cimg::fclose(nfile);
+LINIE :           throw CImgIOException(_cimg_instance "load_vrml() : bottom radius and height of cone not defined in file '%s'.",cimg_instance, filename?filename:"(FILE*)");
+LINIE :         }
+LINIE :         else if(!cimg::strncasecmp(line,"bottomRadius",12)) { // We find the bottom radius of the cone first
+LINIE :           if ((err = std::sscanf(line,"bottomRadius %f[^\n] ",&R))!=1) { // We get the radius into the variable R
+LINIE :             if (!file)
+LINIE :               cimg::fclose(nfile);
+LINIE :             throw CImgIOException(_cimg_instance "load_vrml() : Failed to read cone bottomRadius in file '%s'.",cimg_instance,filename?filename:"(FILE*)");
+LINIE :           }
+LINIE :           while(!std::feof(nfile) && cimg::strncasecmp(line,"height",6)) // We look for the height of the cone
+LINIE :             err = std::fscanf(nfile,"%1023[^\n] ",line);
+LINIE : 
+LINIE :           if(std::feof(nfile)) {
+LINIE :             if (!file)
+LINIE :               cimg::fclose(nfile);
+LINIE :             throw CImgIOException(_cimg_instance "load_vrml() : height of cone not defined in file '%s'.",cimg_instance, filename?filename:"(FILE*)");
+LINIE :           }
+LINIE : 
+LINIE :           if ((err = std::sscanf(line,"height %f[^\n] ",&H))!=1) { // We get the height into the variable H
+LINIE :             if (!file)
+LINIE :               cimg::fclose(nfile);
+LINIE :             throw CImgIOException(_cimg_instance "load_vrml() : Failed to read cone height in file '%s'.",cimg_instance,filename?filename:"(FILE*)");
+LINIE :           }
+LINIE :         }
+LINIE :         else { // We find the height of the cone first
+LINIE :           if ((err = std::sscanf(line,"height %f[^\n] ",&H))!=1) {
+LINIE :             if (!file)
+LINIE :               cimg::fclose(nfile);
+LINIE :             throw CImgIOException(_cimg_instance "load_vrml() : Failed to read cone height in file '%s'.",cimg_instance,filename?filename:"(FILE*)");
+LINIE :           }
+LINIE :           while(!std::feof(nfile) && cimg::strncasecmp(line,"bottomRadius",12))
+LINIE :             err = std::fscanf(nfile,"%1023[^\n] ",line);
+LINIE : 
+LINIE :           if(std::feof(nfile)) {
+LINIE :             if (!file)
+LINIE :               cimg::fclose(nfile);
+LINIE :             throw CImgIOException(_cimg_instance "load_vrml() : bottom radius of cone not defined in file '%s'.",cimg_instance, filename?filename:"(FILE*)");
+LINIE :           }
+LINIE : 
+LINIE :           if ((err = std::sscanf(line,"bottomRadius %f[^\n] ",&R))!=1) {
+LINIE :             if (!file)
+LINIE :               cimg::fclose(nfile);
+LINIE :             throw CImgIOException(_cimg_instance "load_vrml() : Failed to read cone bottom radius in file '%s'.",cimg_instance,filename?filename:"(FILE*)");
+LINIE :           }
+LINIE :         }
+LINIE :         const CImg<T> pointsTemp = CImg<T>::cone3d(primitivesTemp,(T)R,(T)H); // Compute the necessary points and primitives for a cone of radius R and height H
+LINIE : 
+LINIE :         nbPrimitives = primitivesTemp.size();
+LINIE : 
+LINIE :         if(textureTest) { // If the object has a texture
+LINIE :           const CImg<float> texture(textureFile);                                      // We put the image used as a texture into a CImg object
+LINIE :           colorsTextured.insert(primitivesTemp.size(),CImg<unsigned char>::vector(0,50,250));   // We initialize the colorsTextured list
+LINIE :           pointsTemp.texturize_object3d(primitivesTemp,colorsTextured,texture,coords); // We texturize the object
+LINIE :           nbPrimitives = 0;
+LINIE :         }
+LINIE : 
+LINIE :         if(nbPointsTotal) {
+LINIE :           for (int j=0;j<(int)primitivesTemp.size();j++) {
+LINIE :             for(int i=0;i<3;i++)
+LINIE :               primitivesTemp(j).at(i) += (tf)nbPointsTotal;
+LINIE :           }
+LINIE :         }
+LINIE : 
+LINIE :         primitives.push_back(primitivesTemp);
+LINIE :         for(int i=0;i<(int)pointsTemp.size()/3;++i) {
+LINIE :           listePoints.push_back((T)pointsTemp.at(i));
+LINIE :           listePoints.push_back((T)pointsTemp.at(i+pointsTemp.size()/3));
+LINIE :           listePoints.push_back((T)pointsTemp.at(i+2*pointsTemp.size()/3));
+LINIE :         }
+LINIE :         nbPointsTotal += pointsTemp.size()/3;
+LINIE :       }
+LINIE :       else if(!cimg::strncasecmp(type,"Cylinder",8)) { // If the object to draw is a cylinder
+LINIE :         while(cimg::strncasecmp(line,"radius",6) && !std::feof(nfile) && cimg::strncasecmp(line,"height",6))
+LINIE :           err = std::fscanf(nfile,"%1023[^\n] ",line);
+LINIE :         float R = 0, H = 0;
+LINIE :         if(std::feof(nfile)) {
+LINIE :           if (!file)
+LINIE :             cimg::fclose(nfile);
+LINIE :           throw CImgIOException(_cimg_instance "load_vrml() : radius or height of cylinder not defined in file '%s'.",cimg_instance, filename?filename:"(FILE*)");
+LINIE :         }
+LINIE :         else if(!cimg::strncasecmp(line,"radius",6)) { // If we find the radius first
+LINIE :           if ((err = std::sscanf(line,"radius %f[^\n] ",&R))!=1) {
+LINIE :             if (!file)
+LINIE :               cimg::fclose(nfile);
+LINIE :             throw CImgIOException(_cimg_instance "load_vrml() : Failed to read cylinder radius in file '%s'.",cimg_instance,filename?filename:"(FILE*)");
+LINIE :           }
+LINIE :           while(!std::feof(nfile) && cimg::strncasecmp(line,"height",6)) // We now look for the height of the cylinder
+LINIE :             err = std::fscanf(nfile,"%1023[^\n] ",line);
+LINIE : 
+LINIE :           if(std::feof(nfile)) {
+LINIE :             if (!file)
+LINIE :               cimg::fclose(nfile);
+LINIE :             throw CImgIOException(_cimg_instance "load_vrml() : height of cylinder not defined in file '%s'.",cimg_instance, filename?filename:"(FILE*)");
+LINIE :           }
+LINIE : 
+LINIE :           if ((err = std::sscanf(line,"height %f[^\n] ",&H))!=1) {
+LINIE :             if (!file)
+LINIE :               cimg::fclose(nfile);
+LINIE :             throw CImgIOException(_cimg_instance "load_vrml() : Failed to read cylinder height in file '%s'.",cimg_instance,filename?filename:"(FILE*)");
+LINIE :           }
+LINIE :         }
+LINIE :         else { // If we find the height first
+LINIE :           if ((err = std::sscanf(line,"height %f[^\n] ",&H))!=1) {
+LINIE :             if (!file)
+LINIE :               cimg::fclose(nfile);
+LINIE :             throw CImgIOException(_cimg_instance "load_vrml() : Failed to read cylinder height in file '%s'.",cimg_instance,filename?filename:"(FILE*)");
+LINIE :           }
+LINIE :           while(!std::feof(nfile) && cimg::strncasecmp(line,"radius",6))// We now look for the radius of the cylinder
+LINIE :             err = std::fscanf(nfile,"%1023[^\n] ",line);
+LINIE : 
+LINIE :           if(std::feof(nfile)) {
+LINIE :             if (!file)
+LINIE :               cimg::fclose(nfile);
+LINIE :             throw CImgIOException(_cimg_instance "load_vrml() : radius of cylinder not defined in file '%s'.",cimg_instance, filename?filename:"(FILE*)");
+LINIE :           }
+LINIE : 
+LINIE :           if ((err = std::sscanf(line,"radius %f[^\n] ",&R))!=1) {
+LINIE :             if (!file)
+LINIE :               cimg::fclose(nfile);
+LINIE :             throw CImgIOException(_cimg_instance "load_vrml() : Failed to read cylinder radius in file '%s'.",cimg_instance,filename?filename:"(FILE*)");
+LINIE :           }
+LINIE :         }
+LINIE :         const CImg<T> pointsTemp = CImg<T>::cylinder3d(primitivesTemp,(T)R,(T)H); // Compute the necessary points and primitives for a cylinder of radius R and height H
+LINIE : 
+LINIE :         if(textureTest) { // If the object has a texture
+LINIE :           const CImg<float> texture(textureFile);                                      // We put the image used as a texture into a CImg object
+LINIE :           colorsTextured.insert(primitivesTemp.size(),CImg<unsigned char>::vector(0,50,250));   // We initialize the colorsTextured list
+LINIE :           pointsTemp.texturize_object3d(primitivesTemp,colorsTextured,texture,coords); // We texturize the object
+LINIE :           nbPrimitives = 0;
+LINIE :         }
+LINIE : 
+LINIE :         nbPrimitives = primitivesTemp.size();
+LINIE : 
+LINIE :         if(nbPointsTotal) {
+LINIE :           for (int j=0;j<(int)primitivesTemp.size();j++) {
+LINIE :             for(int i=0;i<3;i++)
+LINIE :               primitivesTemp(j).at(i) += (tf)nbPointsTotal;
+LINIE :           }
+LINIE :         }
+LINIE : 
+LINIE :         primitives.push_back(primitivesTemp);
+LINIE :         for(int i=0;i<(int)pointsTemp.size()/3;++i) {
+LINIE :           listePoints.push_back((T)pointsTemp.at(i));
+LINIE :           listePoints.push_back((T)pointsTemp.at(i+pointsTemp.size()/3));
+LINIE :           listePoints.push_back((T)pointsTemp.at(i+2*pointsTemp.size()/3));
+LINIE :         }
+LINIE :         nbPointsTotal += pointsTemp.size()/3;
+LINIE :       }
+LINIE :       else if(!cimg::strncasecmp(type,"PointSet",8)) { // If the object to draw is a set of points
+LINIE :         while(cimg::strncasecmp(line,"point [",7) && !std::feof(nfile))
+LINIE :           err = std::fscanf(nfile,"%1023[^\n] ",line);
+LINIE : 
+LINIE :         if(std::feof(nfile)) {
+LINIE :           if (!file)
+LINIE :             cimg::fclose(nfile);
+LINIE :           throw CImgIOException(_cimg_instance "load_vrml() : points of pointSet node not defined in file '%s'.",cimg_instance, filename?filename:"(FILE*)");
+LINIE :         }
+LINIE : 
+LINIE :         err = std::fscanf(nfile,"%1023[^\n] ",line);
+LINIE :         int nbPoints = 0;
+LINIE : 
+LINIE :         while(cimg::strncasecmp(line,"]",1) && !std::feof(nfile)) { // while we did not get all the points and while we are not at the end of the file
+LINIE :           float X=0,Y=0,Z=0;
+LINIE :           if ((err = std::sscanf(line,"%f %f %f,[^\n] ",&X,&Y,&Z))==3 || (err = std::sscanf(line,"%f,%f,%f,[^\n] ",&X,&Y,&Z))==3) {
+LINIE :             // We get the coordinates of all the points and store them into a list of points
+LINIE :             listePoints.push_back((T)X);
+LINIE :             listePoints.push_back((T)Y);
+LINIE :             listePoints.push_back((T)Z);
+LINIE :             ++nbPoints;
+LINIE :           }
+LINIE :           err = std::fscanf(nfile,"%1023[^\n] ",line);
+LINIE :         }
+LINIE :         if(std::feof(nfile)) {
+LINIE :           if (!file)
+LINIE :             cimg::fclose(nfile);
+LINIE :           throw CImgIOException(_cimg_instance "load_vrml() : bad structure of pointSet node in file '%s'.",cimg_instance, filename?filename:"(FILE*)");
+LINIE :         }
+LINIE :         primitivesTemp.assign();
+LINIE : 
+LINIE :         for(int i=0;i<nbPoints;++i) { // The primitive is only composed of the indice of the point itself
+LINIE :           CImg<tf> temp(1,1,1,1,(tf)i);
+LINIE :           primitivesTemp.push_back(temp);
+LINIE :         }
+LINIE : 
+LINIE :         if(nbPointsTotal) {
+LINIE :           for (int j=0;j<(int)primitivesTemp.size();j++) {
+LINIE :             for(int i=0;i<(int)primitivesTemp(j).size();i++)
+LINIE :               primitivesTemp(j).at(i) += (tf)nbPointsTotal;
+LINIE :           }
+LINIE :         }
+LINIE :         nbPrimitives = primitivesTemp.size();
+LINIE : 
+LINIE :         primitives.push_back(primitivesTemp);
+LINIE : 
+LINIE :         nbPointsTotal += nbPoints;
+LINIE :       }
+LINIE :       else if(!cimg::strncasecmp(type,"IndexedLineSet",14) || !cimg::strncasecmp(type,"IndexedFaceSet",14)) { // If the object to draw is a set of lines or a set of faces
+LINIE :         while(cimg::strncasecmp(line,"point [",7) && !std::feof(nfile))
+LINIE :           err = std::fscanf(nfile,"%1023[^\n] ",line);
+LINIE :         if(std::feof(nfile)) {
+LINIE :           if (!file)
+LINIE :             cimg::fclose(nfile);
+LINIE :           throw CImgIOException(_cimg_instance "load_vrml() : points of IndexedSet node not defined in file '%s'.",cimg_instance, filename?filename:"(FILE*)");
+LINIE :         }
+LINIE : 
+LINIE :         err = std::fscanf(nfile,"%1023[^\n] ",line);
+LINIE :         int nbPoints = 0;
+LINIE :         while(cimg::strncasecmp(line,"]",1) && !std::feof(nfile)) { // As long as there are points defined we add them to the list
+LINIE :           float X=0,Y=0,Z=0;
+LINIE :           if ((err = std::sscanf(line,"%f %f %f,[^\n] ",&X,&Y,&Z))==3 || (err = std::sscanf(line,"%f,%f,%f,[^\n] ",&X,&Y,&Z))==3) {
+LINIE :             // We get the coordinates of the points into a list of points
+LINIE :             listePoints.push_back((T)X);
+LINIE :             listePoints.push_back((T)Y);
+LINIE :             listePoints.push_back((T)Z);
+LINIE :             ++nbPoints;
+LINIE :           }
+LINIE :           err = std::fscanf(nfile,"%1023[^\n] ",line);
+LINIE :         }
+LINIE :         if(std::feof(nfile)) {
+LINIE :           if (!file)
+LINIE :             cimg::fclose(nfile);
+LINIE :           throw CImgIOException(_cimg_instance "load_vrml() : bad structure of point vector node in file '%s'.",cimg_instance, filename?filename:"(FILE*)");
+LINIE :         }
+LINIE : 
+LINIE :         primitivesTemp.assign();
+LINIE : 
+LINIE :         while(cimg::strncasecmp(line,"coordIndex [",12) && !std::feof(nfile)) // We are looking for the index of the points
+LINIE :           err = std::fscanf(nfile,"%1023[^\n] ",line);
+LINIE :         if(std::feof(nfile)) {
+LINIE :           if (!file)
+LINIE :             cimg::fclose(nfile);
+LINIE :           throw CImgIOException(_cimg_instance "load_vrml() : coordIndex not furnished for IndexedSet node in file '%s'.",cimg_instance, filename?filename:"(FILE*)");
+LINIE :         }
+LINIE : 
+LINIE :         err = std::fscanf(nfile,"%1023[^\n] ",line);
+LINIE : 
+LINIE :         while(cimg::strncasecmp(line,"]",1) && !std::feof(nfile)) { // As long as there are indices
+LINIE :           if(*line!='#') {
+LINIE :             std::vector<tf> primitiveComponents;
+LINIE :             char * pch;
+LINIE :             pch = std::strtok (line,",");
+LINIE : 
+LINIE :             while (pch != NULL && std::atof(pch)!=-1) { // We extract the list of indices and store them into a vector
+LINIE :               if(!(int)count(primitiveComponents.begin(),primitiveComponents.end(),(tf)std::atof(pch)))
+LINIE :                 primitiveComponents.push_back((tf)std::atof(pch));
+LINIE :               pch = std::strtok (NULL, ",");
+LINIE :             }
+LINIE :             CImg<tf> temp(1,primitiveComponents.size(),1,1);
+LINIE : 
+LINIE :             for(int i=0;i<(int)primitiveComponents.size();++i)
+LINIE :               temp(0,i) = primitiveComponents.at(i);
+LINIE :             primitivesTemp.push_back(temp);
+LINIE :           }
+LINIE :           err = std::fscanf(nfile,"%1023[^\n] ",line);
+LINIE :         }
+LINIE : 
+LINIE :         if(std::feof(nfile)) {
+LINIE :           if (!file)
+LINIE :             cimg::fclose(nfile);
+LINIE :           throw CImgIOException(_cimg_instance "load_vrml() : bad structure of coordIndex in file '%s'.",cimg_instance, filename?filename:"(FILE*)");
+LINIE :         }
+LINIE : 
+LINIE :         if(nbPointsTotal) {
+LINIE :           for (int j=0;j<(int)primitivesTemp.size();j++) {
+LINIE :             for(int i=0;i<(int)primitivesTemp(j).size();i++)
+LINIE :               primitivesTemp(j).at(i) += (tf)nbPointsTotal;
+LINIE :           }
+LINIE :         }
+LINIE : 
+LINIE :         nbPrimitives = primitivesTemp.size();
+LINIE :         primitives.push_back(primitivesTemp);
+LINIE :         nbPointsTotal += nbPoints;
+LINIE : 
+LINIE :         while(cimg::strncasecmp(line,"color [",7) && cimg::strncasecmp(line,"}",1) && !std::feof(nfile))
+LINIE :           err = std::fscanf(nfile,"%1023[^\n] ",line);
+LINIE :         if(std::feof(nfile)) {
+LINIE :           if (!file)
+LINIE :             cimg::fclose(nfile);
+LINIE :           throw CImgIOException(_cimg_instance "load_vrml() : bad structure of coordIndex in file '%s'.",cimg_instance, filename?filename:"(FILE*)");
+LINIE :         }
+LINIE :         else if(!cimg::strncasecmp(line,"color [",7)) { // If there are different colors defined for each faces
+LINIE :           multipleColors = true;
+LINIE :           std::vector<CImg<tc> > listColors;
+LINIE :           err = std::fscanf(nfile,"%1023[^\n] ",line);
+LINIE :           while(cimg::strncasecmp(line,"]",1) && !std::feof(nfile)) { // We add the list of all colors defined into the vector listColors
+LINIE :             if(*line!='#') {
+LINIE :               if ((err = std::sscanf(line,"%f %f %f[^\n] ",&r,&g,&b))!=3) {
+LINIE :                 if (!file)
+LINIE :                   cimg::fclose(nfile);
+LINIE :                 throw CImgIOException(_cimg_instance "load_vrml() : wrong number of color furnished in file '%s'.",cimg_instance,filename?filename:"(FILE*)");
+LINIE :               }
+LINIE :               CImg<tc> img(3,1,1,1,(tc)(r*255),(tc)(g*255),(tc)(b*255));
+LINIE :               listColors.push_back(img);
+LINIE :             }
+LINIE :             err = std::fscanf(nfile,"%1023[^\n] ",line);
+LINIE :           }
+LINIE :           if(std::feof(nfile)) {
+LINIE :             if (!file)
+LINIE :               cimg::fclose(nfile);
+LINIE :             throw CImgIOException(_cimg_instance "load_vrml() : bad structure of color in file '%s'.",cimg_instance, filename?filename:"(FILE*)");
+LINIE :           }
+LINIE :           else {
+LINIE :             while(cimg::strncasecmp(line,"colorIndex [",12) && !std::feof(nfile))
+LINIE :               err = std::fscanf(nfile,"%1023[^\n] ",line);
+LINIE :             if(std::feof(nfile)) {
+LINIE :               if (!file)
+LINIE :                 cimg::fclose(nfile);
+LINIE :               throw CImgIOException(_cimg_instance "load_vrml() : colorIndex not furnished for Color node in file '%s'.",cimg_instance, filename?filename:"(FILE*)");
+LINIE :             }
+LINIE :             err = std::fscanf(nfile,"%1023[^\n] ",line);
+LINIE :             while(cimg::strncasecmp(line,"]",1) && !std::feof(nfile)) { // We add the colors at the right index into the vector colors
+LINIE :               if(*line!='#') {
+LINIE :                 char * pch;
+LINIE :                 pch = std::strtok (line," ");
+LINIE :                 while (pch != NULL) {
+LINIE :                   int indice = std::atoi(pch);
+LINIE :                   colors.insert(CImg<tc>::vector((tc)(listColors[indice])[0],(tc)(listColors[indice])[1],(tc)(listColors[indice])[2]));
+LINIE :                   pch = std::strtok (NULL, " ");
+LINIE :                 }
+LINIE :               }
+LINIE :               err = std::fscanf(nfile,"%1023[^\n] ",line);
+LINIE :             }
+LINIE :           }
+LINIE :         }
+LINIE :       }
+LINIE :       else // If none of the known type of shape is defined
+LINIE :         cimg::warn(_cimg_instance "load_vrml() : Failed to read type of geometry to draw from file '%s'.", cimg_instance,filename?filename:"(FILE*)");
+LINIE : 
+LINIE :       if(textureTest) { // If the object considered is texturized
+LINIE :         colors.push_back(colorsTextured);
+LINIE :         *textureFile = 0;
+LINIE :       }
+LINIE :       while(cimg::strncasecmp(line,"appearance",10) && cimg::strncasecmp(line,"Shape",5) && !std::feof(nfile)) // We look for the node appearance or for another shape
+LINIE :         err = std::fscanf(nfile,"%1023[^\n] ",line);
+LINIE :     }
+LINIE :     if(!cimg::strncasecmp(line,"appearance",10)) { // We are at the appearance node
+LINIE :       while(cimg::strncasecmp(line,"texture ImageTexture",20) && cimg::strncasecmp(line,"diffuseColor",12) && !std::feof(nfile)) // We are looking for a valid appearance node
+LINIE :         err = std::fscanf(nfile,"%1023[^\n] ",line);
+LINIE :       if(!cimg::strncasecmp(line,"diffuseColor",12)) { // If the object as a unique diffuse color
+LINIE :         if ((err = std::sscanf(line,"diffuseColor %f,%f,%f[^\n] ",&r,&g,&b))!=3 && (err = std::sscanf(line,"diffuseColor %f %f %f[^\n] ",&r,&g,&b))!=3) {
+LINIE :           if (!file)
+LINIE :             cimg::fclose(nfile);
+LINIE :           throw CImgIOException(_cimg_instance "load_vrml() : wrong number of color furnished in file '%s'.",cimg_instance,filename?filename:"(FILE*)");
+LINIE :         }
+LINIE :       }
+LINIE :       else if(!cimg::strncasecmp(line,"texture ImageTexture",20)) { // If there is a texture defined in the VRML file
+LINIE :         textureTest = true;
+LINIE :         colorDefined = false;
+LINIE :         while(cimg::strncasecmp(line,"url",3) && !std::feof(nfile))
+LINIE :           err = std::fscanf(nfile,"%1023[^\n] ",line);
+LINIE :         if(std::feof(nfile)) {
+LINIE :           if (!file)
+LINIE :             cimg::fclose(nfile);
+LINIE :           throw CImgIOException(_cimg_instance "load_vrml() : texture not defined in file '%s'.",cimg_instance, filename?filename:"(FILE*)");
+LINIE :         }
+LINIE :         std::sscanf(line,"url [%s][^\n] ",textureFileTemp); // We temporary put the name of the texture image into textureFileTemp
+LINIE : 
+LINIE :         char * pch;
+LINIE :         pch = std::strtok (textureFileTemp,"\"");
+LINIE :         strcpy(textureFile,pch); // We put the url of the texture image into textureFile
+LINIE :       }
+LINIE :     }
+LINIE :     else if(!cimg::strncasecmp(line,"Shape",5)) // We have another shape node
+LINIE :       textureTest = false; // We reinitialize the texture boolean
+LINIE : 
+LINIE :     if(nbPrimitives && colorDefined && !multipleColors && !textureTest) { // If there is only one color defined we add it to the colors CImgList or if no color is defined for an object, we add the default color
+LINIE :       CImgList<tc> colorsTemp;
+LINIE :       colorsTemp.insert(nbPrimitives,CImg<tc>::vector((tc)(r*255),(tc)(g*255),(tc)(b*255)));
+LINIE :       colors.push_back(colorsTemp);
+LINIE :       nbPrimitives = 0;
+LINIE :       r = 0.7f;
+LINIE :       g = 0.7f;
+LINIE :       b = 0.7f;
+LINIE :     }
+LINIE :     err = std::fscanf(nfile,"%1023[^\n] ",line);
+LINIE :   }
+LINIE : 
+LINIE :   assign(listePoints.size()/3,3);
+LINIE :   cimg_forX(*this,l) { // We add the points coordinates to the calling object
+LINIE :     (*this)(l,0) = (T)(listePoints.at(l*3));
+LINIE :     (*this)(l,1) = (T)(listePoints.at(l*3+1));
+LINIE :     (*this)(l,2) = (T)(listePoints.at(l*3+2));
+LINIE :   }
+LINIE : 
+LINIE :   if (!file)
+LINIE :     cimg::fclose(nfile);
+LINIE : 
+LINIE :   return *this;
+LINIE : }
+LINIE : 
+LINIE : //! Save VRML files.
+LINIE : template<typename tf, typename tc>
+LINIE : const CImg<T>& save_vrml(const char *const filename,const CImgList<tf>& primitives, const CImgList<tc>& colors, const char *const texturefile = 0) const {
+LINIE :   return _save_vrml(0,filename,primitives,colors,texturefile);
+LINIE : }
+LINIE : 
+LINIE : //! Save VRML files.
+LINIE : template<typename tf, typename tc>
+LINIE : const CImg<T>& save_vrml(std::FILE *const file,const CImgList<tf>& primitives, const CImgList<tc>& colors, const char *const texturefile = 0) const {
+LINIE :   return _save_vrml(file,0,primitives,colors,texturefile);
+LINIE : }
+LINIE : 
+LINIE : // Save VRML files (internal).
+LINIE : template<typename tf, typename tc>
+LINIE : const CImg<T>& _save_vrml(std::FILE *const file, const char *const filename,const CImgList<tf>& primitives, const CImgList<tc>& colors, const char *const texturefile) const {
+LINIE : 
+LINIE :   // Check that the user furnished a file to save the object and that the object is not empty.
+LINIE :   if (!file && !filename)
+LINIE :     throw CImgArgumentException(_cimg_instance
+LINIE :                                 "save_vrml() : Specified filename is (null).",
+LINIE :                                 cimg_instance);
+LINIE :   if (is_empty())
+LINIE :     throw CImgInstanceException(_cimg_instance
+LINIE :                                 "save_vrml() : Empty instance, for file '%s'.",
+LINIE :                                 cimg_instance,filename?filename:"(FILE*)");
+LINIE : 
+LINIE :   // Check that the object we want to save is a 3D object.
+LINIE :   CImgList<T> opacities;
+LINIE :   char error_message[1024] = {0};
+LINIE :   if (!is_object3d(primitives,colors,opacities,true,error_message))
+LINIE :     throw CImgInstanceException(_cimg_instance "save_vrml() : Invalid specified 3d object, for file '%s' (%s).",cimg_instance,filename?filename:"(FILE*)",error_message);
+LINIE :   const CImg<tc> default_color(1,3,1,1,200);
+LINIE : 
+LINIE :   // We open the file in which we will save the 3D object.
+LINIE :   std::FILE * nfile;
+LINIE :   if(file) nfile = file;
+LINIE :   else nfile = cimg::fopen(filename,"w");
+LINIE : 
+LINIE :   // We use the version 2.0 of VRML to represent the object in UTF8
+LINIE :   std::fprintf(nfile,"#VRML V2.0 utf8\n");
+LINIE : 
+LINIE :   // We copy the coordinates of all the points
+LINIE :   std::fprintf(nfile,"Shape {\n\tgeometry IndexedFaceSet {\n\t\tcoord Coordinate {\n\t\t\tpoint [\n");
+LINIE :   cimg_forX(*this,i)
+LINIE :     std::fprintf(nfile,"\t\t\t\t%f %f %f,\n",(float)((*this)(i,0)),(float)((*this)(i,1)),(float)((*this)(i,2)));
+LINIE :   std::fprintf(nfile,"\t\t\t]\n\t\t}\n\t\tcoordIndex [\n");
+LINIE :   bool sameColor = true;
+LINIE : 
+LINIE :   float r = colors[0][0]/255.0f;
+LINIE :   float g = colors[0][1]/255.0f;
+LINIE :   float b = colors[0][2]/255.0f;
+LINIE : 
+LINIE :   std::vector<std::string> listColor;
+LINIE :   std::string listColorPerFace("");
+LINIE :   for(int i=0;i<(int)colors.size();++i) {// Test if the object is composed of only one color
+LINIE :     float valR = (colors[i][0])/255.0f;
+LINIE :     float valG = (colors[i][1])/255.0f;
+LINIE :     float valB = (colors[i][2])/255.0f;
+LINIE : 
+LINIE :     if (r!=valR || g!=valG || b!=valB) { // If the object has different colors
+LINIE :       sameColor = false;
+LINIE :       i = colors.size();
+LINIE :     }
+LINIE :   }
+LINIE : 
+LINIE :   cimglist_for(primitives,l) { // For each primitive
+LINIE :     const CImg<tc>& color = l<colors.width()?colors[l]:default_color;
+LINIE :     const unsigned int psiz = primitives[l].size(), csiz = color.size();
+LINIE :     float r = color[0]/255.0f;
+LINIE :     float g, b;
+LINIE :     if (csiz > 1) g = color[1]/255.0f;
+LINIE :     else g = r/255.0f;
+LINIE :     if (csiz > 2) b = color[2]/255.0f;
+LINIE :     else b = g/255.0f;
+LINIE : 
+LINIE :     switch (psiz) {
+LINIE :     case 1 :
+LINIE :       std::fprintf(nfile,"\t\t\t%u,-1\n",(unsigned int)primitives(l,0));
+LINIE :       break;
+LINIE :     case 2 :
+LINIE :       std::fprintf(nfile,"\t\t\t%u,%u,-1\n",(unsigned int)primitives(l,0),(unsigned int)primitives(l,1));
+LINIE :       break;
+LINIE :     case 3 :
+LINIE :       std::fprintf(nfile,"\t\t\t%u,%u,%u,-1\n",(unsigned int)primitives(l,0),(unsigned int)primitives(l,2),(unsigned int)primitives(l,1));
+LINIE :       break;
+LINIE :     case 4 :
+LINIE :       std::fprintf(nfile,"\t\t\t%u,%u,%u,%u,-1\n",(unsigned int)primitives(l,0),(unsigned int)primitives(l,3),(unsigned int)primitives(l,2),(unsigned int)primitives(l,1));
+LINIE :       break;
+LINIE :     case 6 : {
+LINIE :       const unsigned int xt = (unsigned int)primitives(l,2), yt = (unsigned int)primitives(l,3);
+LINIE :       r = color.atXY(xt,yt,0)/255.0f;
+LINIE :       g = (csiz>1?color.atXY(xt,yt,1):r)/255.0f;
+LINIE :       b = (csiz>2?color.atXY(xt,yt,2):g)/255.0f;
+LINIE :       std::fprintf(nfile,"\t\t\t%u,%u,-1\n",(unsigned int)primitives(l,0),(unsigned int)primitives(l,1));
+LINIE :     } break;
+LINIE :     case 9 : {
+LINIE :       const unsigned int xt = (unsigned int)primitives(l,3), yt = (unsigned int)primitives(l,4);
+LINIE :       r = color.atXY(xt,yt,0)/255.0f;
+LINIE :       g = (csiz>1?color.atXY(xt,yt,1):r)/255.0f;
+LINIE :       b = (csiz>2?color.atXY(xt,yt,2):g)/255.0f;
+LINIE :       std::fprintf(nfile,"\t\t\t%u,%u,%u,-1\n",(unsigned int)primitives(l,0),(unsigned int)primitives(l,2),(unsigned int)primitives(l,1));
+LINIE :     } break;
+LINIE :     case 12 : {
+LINIE :       const unsigned int xt = (unsigned int)primitives(l,4), yt = (unsigned int)primitives(l,5);
+LINIE :       r = color.atXY(xt,yt,0)/255.0f;
+LINIE :       g = (csiz>1?color.atXY(xt,yt,1):r)/255.0f;
+LINIE :       b = (csiz>2?color.atXY(xt,yt,2):g)/255.0f;
+LINIE :       std::fprintf(nfile,"\t\t\t%u,%u,%u,%u,-1\n",(unsigned int)primitives(l,0),(unsigned int)primitives(l,3),(unsigned int)primitives(l,2),(unsigned int)primitives(l,1));
+LINIE :     } break;
+LINIE :     }
+LINIE :     if (!sameColor) { // If there are different colors we store on every loop the RGB values into the vector listColor
+LINIE :       std::ostringstream oss;
+LINIE :       oss << r << " " << g << " " << b << "\n";
+LINIE :       if (listColor.size() == 0) {
+LINIE :         listColor.push_back(oss.str());
+LINIE :         listColorPerFace += "0"; // We store the indice of the color
+LINIE :       }
+LINIE :       else {
+LINIE :         std::vector<std::string>::iterator it;
+LINIE :         it = find (listColor.begin(), listColor.end(), oss.str());
+LINIE :         std::ostringstream oss2;
+LINIE :         if(it==listColor.end()) {
+LINIE :           oss2 << " " << listColor.size();
+LINIE :           listColorPerFace += oss2.str();
+LINIE :           listColor.push_back(oss.str());
+LINIE :         }
+LINIE :         else {
+LINIE :           int n = 0;
+LINIE :           for (std::vector<std::string>::iterator iter = listColor.begin(); iter != it; iter++) ++n;
+LINIE :           oss2 << " " << n;
+LINIE :           listColorPerFace += oss2.str();
+LINIE :         }
+LINIE :       }
+LINIE :     }
+LINIE :   }
+LINIE :   std::fprintf(nfile,"\t\t]\n");
+LINIE : 
+LINIE :   if (texturefile) // If we have a texture instead of a color
+LINIE :     std::fprintf(nfile,"\n\t}\n\tappearance DEF theTexture Appearance {\n\t\ttexture ImageTexture {\n\t\t\turl [\"%s\"]\n\t\t}\n\t}\n}",
+LINIE :                  texturefile);
+LINIE :   else {
+LINIE :     if(!sameColor) { // If there are different colors we add all of them
+LINIE :       std::fprintf(nfile,"\tcolorPerVertex FALSE\n\tcolor Color {\n\t\tcolor [\n");
+LINIE :       while(!listColor.empty()) {
+LINIE :         std::fprintf(nfile,"\t\t\t%s",(listColor.back()).c_str());
+LINIE :         listColor.pop_back();
+LINIE :       }
+LINIE :       std::fprintf(nfile,"\t\t]\n\t}\n\tcolorIndex [\n\t\t");
+LINIE :       std::fprintf(nfile,"%s",listColorPerFace.c_str());
+LINIE :       std::fprintf(nfile,"\n\t]\n\t}\n}");
+LINIE :     }
+LINIE :     else { // If there is only one color we add it with the Material node
+LINIE :       std::fprintf(nfile,"\t}\n\tappearance Appearance {\n\t\tmaterial Material {\n\t\t\tdiffuseColor %f,%f,%f\n\t\t}\n\t}\n}",
+LINIE :                    colors[0][0]/255.0f,colors[0][1]/255.0f,colors[0][2]/255.0f);
+LINIE :     }
+LINIE :   }
+LINIE :   if (!file) cimg::fclose(nfile);
+LINIE :   return *this;
+LINIE : }
+LINIE : 
+LINIE : #endif
+LINIE : 
+
+
+file 95 
+vrml 56 
+header 1 
+cimg 212 
+plug 1 
+in 48 
+description 1 
+plugin 4 
+that 11 
+provide 1 
+functions 1 
+to 43 
+load 51 
+save 16 
+vrmL 13 
+files 4 
+this 16 
+is 30 
+part 1 
+of 81 
+the 163 
+library 1 
+project 1 
+http 3 
+sourceforge 1 
+net 1 
+copyright 1 
+greg 2 
+rami 2 
+at 28 
+gmail 1 
+com 1 
+license 5 
+cecilL 5 
+www 2 
+cecill 2 
+info 2 
+licences 1 
+licence 1 
+en 1 
+html 1 
+software 5 
+governed 1 
+by 6 
+under 2 
+french 1 
+law 1 
+and 30 
+abiding 1 
+rules 1 
+distribution 1 
+free 2 
+you 5 
+can 1 
+use 5 
+modify 2 
+or 10 
+redistribute 2 
+terms 2 
+as 15 
+circulated 1 
+ceA 1 
+cnrS 1 
+inriA 1 
+following 2 
+urL 1 
+counterpart 1 
+access 1 
+source 1 
+code 2 
+rights 2 
+copy 2 
+granted 1 
+users 2 
+are 18 
+provided 1 
+only 6 
+with 3 
+limited 2 
+warranty 1 
+software's 2 
+author 1 
+holder 1 
+economic 1 
+successive 1 
+licensors 1 
+have 4 
+liability 1 
+respect 1 
+user's 1 
+attention 1 
+drawn 1 
+risks 1 
+associated 1 
+loading 1 
+using 1 
+modifying 1 
+developing 1 
+reproducing 1 
+user 2 
+light 1 
+its 2 
+specific 2 
+status 1 
+may 1 
+mean 1 
+it 9 
+complicated 1 
+manipulate 1 
+also 1 
+therefore 2 
+means 2 
+reserved 1 
+for 48 
+developers 1 
+experienced 1 
+professionals 1 
+having 1 
+depth 2 
+computer 1 
+knowledge 2 
+encouraged 1 
+test 2 
+suitability 1 
+regards 2 
+their 2 
+requirements 1 
+conditions 2 
+enabling 1 
+security 2 
+systems 1 
+data 1 
+be 1 
+ensured 1 
+more 1 
+generally 1 
+operate 1 
+same 1 
+fact 1 
+presently 1 
+reading 1 
+had 1 
+accept 1 
+importanT 1 
+notE 1 
+need 1 
+include 5 
+lines 2 
+your 1 
+own 1 
+vector 18 
+string 5 
+sstream 1 
+algorithm 1 
+ifndef 1 
+define 1 
+object 53 
+from 6 
+template 8 
+typename 16 
+tf 29 
+tc 33 
+const 49 
+char 19 
+filename 14 
+cimglist 24 
+primitives 60 
+colors 40 
+return 8 
+static 2 
+get 9 
+std 141 
+filE 43 
+internal 2 
+if 146 
+throw 37 
+cimgargumentexception 2 
+instance 77 
+specified 4 
+null 2 
+nfile 132 
+file?file 1 
+fopen 2 
+line 99 
+int 69 
+err 51 
+skip 1 
+comments 1 
+read 12 
+first 6 
+node 17 
+do 2 
+fscanf 30 
+while 30 
+check 3 
+valid 3 
+strncasecmp 49 
+shape 11 
+transform 1 
+navigationinfo 1 
+billboard 1 
+fclose 35 
+cimgioexception 33 
+nodes 4 
+not 20 
+found 3 
+s' 36 
+filename?filename 36 
+look 6 
+we 63 
+manage 1 
+treatment 1 
+other 1 
+yet 1 
+feof 44 
+either 1 
+geometry 8 
+appearance 10 
+none 2 
+these 1 
+defined 21 
+listepoints 23 
+intermediate 2 
+list 11 
+containing 2 
+points 21 
+whole 4 
+assign 5 
+nbpointstotal 19 
+nbprimitives 14 
+count 2 
+number 7 
+float 24 
+rgB 2 
+level 1 
+gray 1 
+default 4 
+bool 2 
+colordefined 4 
+true 6 
+multiplecolors 3 
+false 5 
+texturetest 9 
+boolean 2 
+used 10 
+know 1 
+color 30 
+an 4 
+has 7 
+multiple 1 
+texture 26 
+texturefile 15 
+variable 4 
+name 2 
+image 7 
+type 12 
+texturefiletemp 4 
+sscanf 20 
+looking 4 
+draw 8 
+coords 5 
+empty 5 
+texturization 2 
+colorstextured 14 
+primitivestemp 43 
+update 1 
+box 9 
+size 48 
+no 4 
+width 2 
+height 24 
+failed 11 
+pointstemp 34 
+generate 1 
+put 6 
+into 15 
+insert 6 
+unsigned 33 
+initialize 4 
+texturize 8 
+there 11 
+already 2 
+some 2 
+objects 2 
+scene 2 
+shift 1 
+indices 3 
+designate 1 
+right 3 
+push 32 
+back 34 
+add 10 
+general 1 
+temporary 2 
+order 1 
+increase 1 
+else 21 
+sphere 7 
+radius 24 
+compute 3 
+necessary 3 
+on 2 
+attribution 1 
+case 8 
+set 4 
+because 1 
+cone 14 
+bottomradius 6 
+bottom 4 
+find 5 
+cylinder 13 
+now 2 
+pointset 3 
+point 4 
+nbpoints 7 
+did 1 
+all 5 
+end 4 
+coordinates 4 
+store 4 
+them 4 
+bad 5 
+structure 5 
+primitive 2 
+composed 2 
+indice 6 
+itself 1 
+temp 5 
+indexedlineset 1 
+indexedfaceset 2 
+faces 2 
+indexedset 2 
+long 2 
+coordindex 4 
+index 2 
+furnished 5 
+primitivecomponents 7 
+pch 15 
+strtok 5 
+nulL 4 
+atof 3 
+extract 1 
+begin 3 
+different 4 
+each 2 
+listcolors 6 
+wrong 2 
+img 2 
+colorindex 2 
+atoi 1 
+known 1 
+warn 1 
+considered 1 
+texturized 1 
+another 2 
+imagetexture 3 
+diffusecolor 4 
+unique 1 
+diffuse 1 
+url 3 
+strcpy 1 
+reinitialize 1 
+one 3 
+colorstemp 3 
+forX 2 
+calling 1 
+cimginstanceexception 2 
+want 1 
+opacities 2 
+error 3 
+message 3 
+invalid 1 
+open 1 
+which 1 
+will 1 
+version 1 
+represent 1 
+utF 1 
+fprintf 19 
+utf 1 
+tgeometry 1 
+tcoord 1 
+coordinate 1 
+tpoint 1 
+tcoordindex 1 
+samecolor 4 
+listcolor 13 
+listcolorperface 5 
+valR 2 
+valG 2 
+valB 2 
+?colors 1 
+psiz 2 
+csiz 9 
+switch 1 
+break 7 
+xt 12 
+yt 12 
+atxY 9 
+?color 6 
+every 1 
+loop 1 
+values 1 
+ostringstream 2 
+oss 10 
+str 7 
+iterator 2 
+iter 3 
+instead 1 
+tappearance 2 
+deF 1 
+thetexture 1 
+ttexture 1 
+turl 1 
+tcolorpervertex 1 
+falsE 1 
+tcolor 2 
+pop 1 
+tcolorindex 1 
+material 2 
+tmaterial 1 
+tdiffusecolor 1 
+endif 1 
+LINIE : /*
+LINIE :  #
+LINIE :  #  File        : vtk.h
+LINIE :  #                ( C++ header file - CImg plug-in )
+LINIE :  #
+LINIE :  #  Description : CImg plugin that implements a way to save 3d scene as TK legacy file format.
+LINIE :  #                This file is a part of the CImg Library project.
+LINIE :  #                ( http://cimg.sourceforge.net )
+LINIE :  #
+LINIE :  #  Copyright   : Haz-Edine Assemlal
+LINIE :  #                ( http://www.cim.mcgill.ca/~assemlal/ )
+LINIE :  #
+LINIE :  #  License     : CeCILL v2.0
+LINIE :  #                ( http://www.cecill.info/licences/Licence_CeCILL_V2-en.html )
+LINIE :  #
+LINIE :  #  This software is governed by the CeCILL  license under French law and
+LINIE :  #  abiding by the rules of distribution of free software.  You can  use,
+LINIE :  #  modify and/ or redistribute the software under the terms of the CeCILL
+LINIE :  #  license as circulated by CEA, CNRS and INRIA at the following URL
+LINIE :  #  "http://www.cecill.info".
+LINIE :  #
+LINIE :  #  As a counterpart to the access to the source code and  rights to copy,
+LINIE :  #  modify and redistribute granted by the license, users are provided only
+LINIE :  #  with a limited warranty  and the software's author,  the holder of the
+LINIE :  #  economic rights,  and the successive licensors  have only  limited
+LINIE :  #  liability.
+LINIE :  #
+LINIE :  #  In this respect, the user's attention is drawn to the risks associated
+LINIE :  #  with loading,  using,  modifying and/or developing or reproducing the
+LINIE :  #  software by the user in light of its specific status of free software,
+LINIE :  #  that may mean  that it is complicated to manipulate,  and  that  also
+LINIE :  #  therefore means  that it is reserved for developers  and  experienced
+LINIE :  #  professionals having in-depth computer knowledge. Users are therefore
+LINIE :  #  encouraged to load and test the software's suitability as regards their
+LINIE :  #  requirements in conditions enabling the security of their systems and/or
+LINIE :  #  data to be ensured and,  more generally, to use and operate it in the
+LINIE :  #  same conditions as regards security.
+LINIE :  #
+LINIE :  #  The fact that you are presently reading this means that you have had
+LINIE :  #  knowledge of the CeCILL license and that you accept its terms.
+LINIE :  #
+LINIE : */
+LINIE : 
+LINIE : #ifndef cimg_plugin_vtk
+LINIE : #define cimg_plugin_vtk
+LINIE : 
+LINIE : // Save 3D scene in legacy VTK format
+LINIE : /* *this: CImgList of points
+LINIE :  * faces: CImgList of faces
+LINIE :  * colors: CImgList of colors,
+LINIE :  * opacities: CImgList of opacities
+LINIE :  */
+LINIE : template<typename tf, typename tc, typename to>
+LINIE :   CImgList<T>& save_vtk(const char* const filename,
+LINIE :                         const CImgList<tf>& faces,
+LINIE :                         const CImgList<tc>& colors,
+LINIE :                         const CImgList<to<& opacities) {
+LINIE :   // Open file
+LINIE :   std::FILE *const nfile = cimg::fopen(filename,"w");
+LINIE : 
+LINIE :   // Header
+LINIE :   std::fprintf(nfile,"# vtk DataFile Version 3.0\n");
+LINIE :   std::fprintf(nfile,"%s\n",filename);
+LINIE :   std::fprintf(nfile,"ASCII\n");
+LINIE :   std::fprintf(nfile,"DATASET UNSTRUCTURED_GRID\n");
+LINIE : 
+LINIE :   // Points
+LINIE :   std::fprintf(nfile,"POINTS %u float\n",points.size());
+LINIE :   cimglist_for(points,p)
+LINIE :     std::fprintf(nfile,"%f %f %f\n",points[p](0),points[p](1),points[p](2));
+LINIE :   std::fprintf(nfile,"\n");
+LINIE : 
+LINIE :   // Faces (valid only for triangles - type 5)
+LINIE :   if (faces) {
+LINIE :     std::fprintf(nfile,"CELLS %u %u\n",faces.size(),faces.size()*4);
+LINIE :     cimglist_for(faces,f)
+LINIE :       std::fprintf(nfile,"%d %u %u %u\n",3,faces[f](0),faces[f](1),faces[f](2));
+LINIE :     std::fprintf(nfile,"CELL_TYPES %u\n",faces.size());
+LINIE :     cimglist_for(faces,f)
+LINIE :       std::fprintf(nfile,"%d\n",5);
+LINIE :     std::fprintf(nfile,"\n");
+LINIE :   }
+LINIE : 
+LINIE :   // Colors and Opacities
+LINIE :   std::fprintf(nfile,"CELL_DATA %d\n",colors.size());
+LINIE :   std::fprintf(nfile,"COLOR_SCALARS colors 4\n");
+LINIE : 
+LINIE :   const tc tcmax = cimg::type<tc>::max();
+LINIE :   cimglist_for(colors,t)
+LINIE :     std::fprintf(nfile,"%f %f %f %f\n",
+LINIE :                  (float)colors[t](0)/tcmax,
+LINIE :                  (float)colors[t](1)/tcmax,
+LINIE :                  (float)colors[t](2)/tcmax,
+LINIE :                  opacities[t](0));
+LINIE :   std::fprintf(nfile,"\n");
+LINIE : 
+LINIE :   // Close file
+LINIE :   cimg::fclose(nfile);
+LINIE : 
+LINIE :   return *this;
+LINIE : }
+LINIE : 
+LINIE : #endif
+LINIE : 
+
+
+file 6 
+vtk 5 
+header 2 
+cimg 9 
+plug 1 
+in 7 
+description 1 
+plugin 3 
+that 8 
+implements 1 
+way 1 
+to 11 
+save 3 
+scene 2 
+as 5 
+tK 1 
+legacy 2 
+format 2 
+this 6 
+is 5 
+part 1 
+of 13 
+the 23 
+library 1 
+project 1 
+http 4 
+sourceforge 1 
+net 1 
+copyright 1 
+haz 1 
+edine 1 
+assemlal 2 
+www 3 
+cim 1 
+mcgill 1 
+ca 1 
+license 5 
+cecilL 5 
+cecill 2 
+info 2 
+licences 1 
+licence 1 
+en 1 
+html 1 
+software 5 
+governed 1 
+by 5 
+under 2 
+french 1 
+law 1 
+and 16 
+abiding 1 
+rules 1 
+distribution 1 
+free 2 
+you 4 
+can 1 
+use 2 
+modify 2 
+or 4 
+redistribute 2 
+terms 2 
+circulated 1 
+ceA 1 
+cnrS 1 
+inriA 1 
+at 1 
+following 1 
+urL 1 
+counterpart 1 
+access 1 
+source 1 
+code 1 
+rights 2 
+copy 1 
+granted 1 
+users 2 
+are 3 
+provided 1 
+only 3 
+with 2 
+limited 2 
+warranty 1 
+software's 2 
+author 1 
+holder 1 
+economic 1 
+successive 1 
+licensors 1 
+have 2 
+liability 1 
+respect 1 
+user's 1 
+attention 1 
+drawn 1 
+risks 1 
+associated 1 
+loading 1 
+using 1 
+modifying 1 
+developing 1 
+reproducing 1 
+user 1 
+light 1 
+its 2 
+specific 1 
+status 1 
+may 1 
+mean 1 
+it 3 
+complicated 1 
+manipulate 1 
+also 1 
+therefore 2 
+means 2 
+reserved 1 
+for 6 
+developers 1 
+experienced 1 
+professionals 1 
+having 1 
+depth 1 
+computer 1 
+knowledge 2 
+encouraged 1 
+load 1 
+test 1 
+suitability 1 
+regards 2 
+their 2 
+requirements 1 
+conditions 2 
+enabling 1 
+security 2 
+systems 1 
+data 1 
+be 1 
+ensured 1 
+more 1 
+generally 1 
+operate 1 
+same 1 
+fact 1 
+presently 1 
+reading 1 
+had 1 
+accept 1 
+ifndef 1 
+define 1 
+vtK 1 
+cimglist 12 
+points 7 
+faces 13 
+colors 10 
+opacities 5 
+template 1 
+typename 3 
+tf 2 
+tc 4 
+const 7 
+char 1 
+filename 3 
+open 1 
+std 17 
+filE 1 
+nfile 18 
+fopen 1 
+fprintf 16 
+datafile 1 
+version 1 
+asciI 1 
+dataseT 1 
+unstructureD 1 
+griD 1 
+pointS 1 
+float 4 
+size 5 
+valid 1 
+triangles 1 
+type 2 
+if 1 
+cellS 1 
+celL 2 
+typeS 1 
+datA 1 
+coloR 1 
+scalarS 1 
+tcmax 4 
+max 1 
+close 1 
+fclose 1 
+return 1 
+endif 1 
+
+
+
+
+
+
+TERMENI SI NUMARUL DE FISIERE : 621 4
+
+
+Matricea frecventa termeni
+5 3 95 6 
+2 6 10 0 
+1 0 0 0 
+1 0 1 2 
+18 68 212 9 
+2 0 1 1 
+7 9 48 7 
+1 1 1 1 
+8 7 11 8 
+1 0 0 0 
+2 1 1 1 
+1 0 0 0 
+2 0 0 0 
+3 33 48 6 
+1 0 0 0 
+1 0 0 2 
+1 0 0 0 
+6 5 6 5 
+3 2 2 2 
+2 0 0 0 
+3 0 0 0 
+11 0 0 0 
+7 18 16 6 
+5 6 30 5 
+1 1 1 1 
+10 54 81 13 
+28 129 163 23 
+1 1 1 1 
+1 3 1 1 
+4 7 3 4 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 0 0 0 
+2 0 0 0 
+3 2 2 2 
+1 0 0 0 
+1 4 0 0 
+5 5 5 5 
+5 5 5 5 
+2 6 2 3 
+2 2 2 2 
+2 2 2 2 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 2 1 1 
+5 5 5 5 
+1 1 1 1 
+2 2 2 2 
+1 1 1 1 
+1 1 1 1 
+15 16 30 16 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+2 2 2 2 
+4 4 5 4 
+1 1 1 1 
+2 22 5 2 
+2 2 2 2 
+4 4 10 4 
+2 2 2 2 
+2 2 2 2 
+4 8 15 5 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 28 1 
+1 1 2 1 
+1 1 1 1 
+1 1 1 1 
+9 14 43 11 
+1 1 1 1 
+1 2 1 1 
+2 1 2 1 
+2 2 2 2 
+1 1 2 1 
+1 1 1 1 
+3 3 18 3 
+1 1 1 1 
+2 2 6 3 
+2 2 3 2 
+2 2 2 2 
+1 1 1 1 
+2 2 2 2 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+2 2 4 2 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 2 1 
+1 1 1 1 
+1 1 2 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+3 3 9 3 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+2 2 2 2 
+2 2 2 2 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 21 2 1 
+1 1 1 1 
+2 2 2 2 
+1 1 1 1 
+9 1 51 1 
+1 1 2 1 
+1 1 1 1 
+2 2 2 2 
+2 2 2 2 
+1 1 1 1 
+2 2 2 2 
+1 1 1 1 
+2 2 2 2 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+3 0 1 1 
+7 1 4 3 
+2 0 0 0 
+3 9 1 1 
+1 3 1 0 
+1 0 1 0 
+1 0 0 0 
+1 0 2 0 
+2 21 9 0 
+5 75 49 7 
+3 0 19 1 
+14 0 14 3 
+2 12 141 17 
+2 1 19 16 
+2 1 0 0 
+2 0 36 0 
+5 12 8 1 
+1 11 0 0 
+1 0 0 0 
+1 0 0 0 
+1 0 0 0 
+1 0 77 0 
+1 8 7 0 
+1 0 15 0 
+5 0 16 3 
+1 0 0 0 
+1 0 0 0 
+1 0 4 0 
+2 14 146 1 
+2 0 49 0 
+2 0 0 0 
+3 2 1 1 
+1 0 4 0 
+0 11 0 0 
+0 1 0 0 
+0 2 0 0 
+0 1 0 0 
+0 1 0 0 
+0 2 0 0 
+0 2 0 0 
+0 1 0 0 
+0 1 0 0 
+0 1 0 0 
+0 1 0 0 
+0 2 2 0 
+0 1 0 0 
+0 1 0 0 
+0 1 0 0 
+0 19 0 0 
+0 2 0 0 
+0 74 69 0 
+0 3 0 0 
+0 25 2 0 
+0 16 2 0 
+0 3 0 0 
+0 11 24 0 
+0 3 0 0 
+0 2 0 0 
+0 1 0 0 
+0 1 1 0 
+0 4 4 0 
+0 20 0 0 
+0 20 0 0 
+0 2 0 0 
+0 31 0 0 
+0 33 0 0 
+0 7 48 5 
+0 7 0 0 
+0 7 0 0 
+0 1 0 0 
+0 1 0 0 
+0 1 0 0 
+0 1 0 0 
+0 1 0 0 
+0 4 1 0 
+0 6 0 0 
+0 1 0 0 
+0 8 0 0 
+0 1 0 0 
+0 5 0 0 
+0 5 0 1 
+0 17 0 0 
+0 3 0 0 
+0 19 0 0 
+0 10 0 0 
+0 3 0 0 
+0 4 0 0 
+0 49 0 0 
+0 2 0 0 
+0 1 0 0 
+0 5 0 0 
+0 2 18 0 
+0 49 0 0 
+0 9 1 0 
+0 9 0 0 
+0 39 0 0 
+0 23 0 0 
+0 3 0 0 
+0 3 0 0 
+0 23 0 0 
+0 20 0 0 
+0 7 21 0 
+0 2 1 0 
+0 1 0 0 
+0 3 0 0 
+0 12 0 0 
+0 12 0 0 
+0 11 0 0 
+0 6 0 0 
+0 4 0 0 
+0 8 0 0 
+0 3 0 0 
+0 3 0 0 
+0 2 0 0 
+0 2 0 0 
+0 2 0 0 
+0 2 8 0 
+0 1 0 0 
+0 1 0 0 
+0 6 0 0 
+0 1 0 0 
+0 3 0 0 
+0 3 0 0 
+0 3 6 0 
+0 6 0 0 
+0 6 0 0 
+0 9 0 0 
+0 9 0 0 
+0 13 0 0 
+0 8 0 0 
+0 13 0 0 
+0 3 0 0 
+0 3 0 0 
+0 12 0 0 
+0 3 7 0 
+0 7 0 0 
+0 3 10 0 
+0 3 0 0 
+0 18 0 0 
+0 22 0 0 
+0 7 2 0 
+0 4 0 0 
+0 3 0 0 
+0 4 0 0 
+0 4 0 0 
+0 4 0 0 
+0 15 0 0 
+0 15 0 0 
+0 6 6 0 
+0 3 0 0 
+0 3 0 0 
+0 3 0 0 
+0 3 0 0 
+0 3 0 0 
+0 3 0 0 
+0 3 0 0 
+0 3 0 0 
+0 3 0 0 
+0 3 0 0 
+0 3 0 0 
+0 3 0 0 
+0 3 0 0 
+0 17 24 4 
+0 4 2 0 
+0 4 0 0 
+0 2 0 0 
+0 1 0 0 
+0 4 0 0 
+0 4 0 0 
+0 3 0 0 
+0 1 0 0 
+0 5 2 0 
+0 2 0 0 
+0 1 0 0 
+0 1 0 0 
+0 1 0 0 
+0 1 0 0 
+0 1 0 0 
+0 1 0 0 
+0 1 0 0 
+0 1 0 0 
+0 2 4 0 
+0 23 0 0 
+0 2 33 0 
+0 5 2 0 
+0 3 0 0 
+0 6 0 0 
+0 1 2 0 
+0 1 0 0 
+0 1 0 0 
+0 3 0 0 
+0 1 0 0 
+0 2 3 0 
+0 1 0 0 
+0 1 0 0 
+0 3 0 0 
+0 1 0 0 
+0 1 0 0 
+0 2 0 0 
+0 1 0 0 
+0 1 30 0 
+0 1 5 0 
+0 1 0 0 
+0 1 0 0 
+0 1 0 0 
+0 1 34 0 
+0 1 0 0 
+0 1 0 0 
+0 1 0 0 
+0 3 0 0 
+0 0 56 0 
+0 0 1 0 
+0 0 13 0 
+0 0 4 0 
+0 0 2 0 
+0 0 2 0 
+0 0 1 0 
+0 0 1 0 
+0 0 1 0 
+0 0 1 0 
+0 0 1 0 
+0 0 5 0 
+0 0 2 0 
+0 0 1 0 
+0 0 1 0 
+0 0 5 0 
+0 0 1 0 
+0 0 1 0 
+0 0 53 0 
+0 0 8 1 
+0 0 16 3 
+0 0 29 2 
+0 0 33 4 
+0 0 24 12 
+0 0 60 0 
+0 0 40 10 
+0 0 43 1 
+0 0 2 0 
+0 0 37 0 
+0 0 2 0 
+0 0 2 0 
+0 0 132 18 
+0 0 1 0 
+0 0 2 1 
+0 0 99 0 
+0 0 51 0 
+0 0 1 0 
+0 0 1 0 
+0 0 12 0 
+0 0 6 0 
+0 0 17 0 
+0 0 2 0 
+0 0 30 0 
+0 0 3 0 
+0 0 3 1 
+0 0 11 0 
+0 0 1 0 
+0 0 1 0 
+0 0 1 0 
+0 0 35 1 
+0 0 33 0 
+0 0 4 0 
+0 0 20 0 
+0 0 3 0 
+0 0 36 0 
+0 0 6 0 
+0 0 63 0 
+0 0 1 0 
+0 0 1 0 
+0 0 1 0 
+0 0 1 0 
+0 0 44 0 
+0 0 1 0 
+0 0 8 0 
+0 0 10 0 
+0 0 2 0 
+0 0 21 0 
+0 0 23 0 
+0 0 2 0 
+0 0 11 0 
+0 0 2 0 
+0 0 21 7 
+0 0 4 0 
+0 0 5 0 
+0 0 19 0 
+0 0 14 0 
+0 0 2 0 
+0 0 1 0 
+0 0 1 0 
+0 0 4 0 
+0 0 4 0 
+0 0 3 0 
+0 0 5 0 
+0 0 9 0 
+0 0 2 0 
+0 0 1 0 
+0 0 30 0 
+0 0 4 0 
+0 0 7 0 
+0 0 1 0 
+0 0 26 0 
+0 0 15 0 
+0 0 4 0 
+0 0 2 0 
+0 0 12 2 
+0 0 4 0 
+0 0 20 0 
+0 0 4 0 
+0 0 5 0 
+0 0 5 0 
+0 0 2 0 
+0 0 14 0 
+0 0 43 0 
+0 0 1 0 
+0 0 9 0 
+0 0 4 0 
+0 0 11 0 
+0 0 34 0 
+0 0 1 0 
+0 0 6 0 
+0 0 6 0 
+0 0 4 0 
+0 0 8 0 
+0 0 11 0 
+0 0 2 0 
+0 0 2 0 
+0 0 2 2 
+0 0 1 0 
+0 0 3 0 
+0 0 1 0 
+0 0 3 0 
+0 0 32 0 
+0 0 1 0 
+0 0 2 0 
+0 0 1 0 
+0 0 1 0 
+0 0 7 0 
+0 0 24 0 
+0 0 3 0 
+0 0 1 0 
+0 0 8 0 
+0 0 1 0 
+0 0 14 0 
+0 0 6 0 
+0 0 4 0 
+0 0 5 0 
+0 0 13 0 
+0 0 2 0 
+0 0 3 0 
+0 0 7 0 
+0 0 1 0 
+0 0 4 0 
+0 0 4 0 
+0 0 4 0 
+0 0 5 0 
+0 0 5 0 
+0 0 2 0 
+0 0 2 0 
+0 0 6 0 
+0 0 1 0 
+0 0 5 0 
+0 0 1 0 
+0 0 2 0 
+0 0 2 13 
+0 0 2 0 
+0 0 2 0 
+0 0 4 0 
+0 0 5 0 
+0 0 7 0 
+0 0 15 0 
+0 0 5 0 
+0 0 4 0 
+0 0 3 0 
+0 0 3 0 
+0 0 4 0 
+0 0 2 0 
+0 0 6 0 
+0 0 2 0 
+0 0 2 0 
+0 0 1 0 
+0 0 1 0 
+0 0 1 0 
+0 0 1 0 
+0 0 1 0 
+0 0 2 0 
+0 0 3 0 
+0 0 4 0 
+0 0 1 0 
+0 0 1 0 
+0 0 3 0 
+0 0 1 0 
+0 0 1 0 
+0 0 3 0 
+0 0 3 0 
+0 0 1 0 
+0 0 2 0 
+0 0 1 0 
+0 0 2 5 
+0 0 3 0 
+0 0 3 0 
+0 0 1 0 
+0 0 1 1 
+0 0 1 0 
+0 0 1 0 
+0 0 1 1 
+0 0 1 0 
+0 0 1 0 
+0 0 1 0 
+0 0 1 0 
+0 0 1 0 
+0 0 1 0 
+0 0 1 0 
+0 0 4 0 
+0 0 13 0 
+0 0 5 0 
+0 0 2 0 
+0 0 2 0 
+0 0 2 0 
+0 0 1 0 
+0 0 2 0 
+0 0 9 0 
+0 0 1 0 
+0 0 7 0 
+0 0 12 0 
+0 0 12 0 
+0 0 9 0 
+0 0 6 0 
+0 0 1 0 
+0 0 2 0 
+0 0 10 0 
+0 0 7 0 
+0 0 2 0 
+0 0 3 0 
+0 0 1 0 
+0 0 2 0 
+0 0 1 0 
+0 0 1 0 
+0 0 1 0 
+0 0 1 0 
+0 0 1 0 
+0 0 1 0 
+0 0 2 0 
+0 0 1 0 
+0 0 1 0 
+0 0 2 0 
+0 0 1 0 
+0 0 1 0 
+0 0 0 5 
+0 0 0 1 
+0 0 0 1 
+0 0 0 1 
+0 0 0 2 
+0 0 0 1 
+0 0 0 1 
+0 0 0 2 
+0 0 0 1 
+0 0 0 1 
+0 0 0 1 
+0 0 0 1 
+0 0 0 1 
+0 0 0 1 
+0 0 0 1 
+0 0 0 1 
+0 0 0 1 
+0 0 0 1 
+0 0 0 1 
+0 0 0 1 
+0 0 0 2 
+0 0 0 1 
+0 0 0 1 
+0 0 0 1 
+0 0 0 1 
+0 0 0 4 
+0 0 0 1 
+
+Global Weighting
+0.0104857 0.0845154 1 0.408248 0.00447334 0.408248 0.0200683 0.5 0.0579284 1 0.377964 1 0.5 0.0170548 1 0.447214 1 0.0905358 0.218218 0.5 0.333333 0.0909091 0.0387783 0.0318465 0.5 0.0101295 0.00473923 0.5 0.288675 0.105409 0.5 0.5 0.5 1 0.5 0.218218 1 0.242536 0.1 0.1 0.137361 0.25 0.25 0.5 0.5 0.5 0.377964 0.1 0.5 0.25 0.5 0.5 0.0247159 0.5 0.5 0.5 0.25 0.117041 0.5 0.04398 0.25 0.0821995 0.25 0.25 0.0550482 0.5 0.5 0.5 0.5 0.0356462 0.377964 0.5 0.5 0.0210959 0.5 0.377964 0.316228 0.25 0.377964 0.5 0.053376 0.5 0.137361 0.218218 0.25 0.5 0.25 0.5 0.5 0.5 0.5 0.5 0.188982 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.377964 0.5 0.377964 0.5 0.5 0.5 0.096225 0.5 0.5 0.5 0.25 0.25 0.5 0.5 0.5 0.5 0.5 0.0472984 0.5 0.25 0.5 0.0193023 0.377964 0.5 0.25 0.25 0.5 0.25 0.5 0.25 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.301511 0.11547 0.5 0.104257 0.301511 0.707107 1 0.447214 0.0436021 0.0111111 0.0519174 0.0499376 0.00701551 0.0400963 0.447214 0.027735 0.065372 0.0905358 1 1 1 0.0129859 0.0936586 0.066519 0.058722 1 1 0.242536 0.00681725 0.0203912 0.5 0.258199 0.242536 0.0909091 1 0.5 1 1 0.5 0.5 1 1 1 1 0.353553 1 1 1 0.0526316 0.5 0.00988357 0.333333 0.0398726 0.0620174 0.333333 0.0378777 0.333333 0.5 1 0.707107 0.176777 0.05 0.05 0.5 0.0322581 0.030303 0.0205066 0.142857 0.142857 1 1 1 1 1 0.242536 0.166667 1 0.125 1 0.2 0.196116 0.0588235 0.333333 0.0526316 0.1 0.333333 0.25 0.0204082 0.5 1 0.2 0.0552158 0.0204082 0.110432 0.111111 0.025641 0.0434783 0.333333 0.333333 0.0434783 0.05 0.0451754 0.447214 1 0.333333 0.0833333 0.0833333 0.0909091 0.166667 0.25 0.125 0.333333 0.333333 0.5 0.5 0.5 0.121268 1 1 0.166667 1 0.333333 0.333333 0.149071 0.166667 0.166667 0.111111 0.111111 0.0769231 0.125 0.0769231 0.333333 0.333333 0.0833333 0.131306 0.142857 0.0957826 0.333333 0.0555556 0.0454545 0.137361 0.25 0.333333 0.25 0.25 0.25 0.0666667 0.0666667 0.117851 0.333333 0.333333 0.333333 0.333333 0.333333 0.333333 0.333333 0.333333 0.333333 0.333333 0.333333 0.333333 0.333333 0.0336909 0.223607 0.25 0.5 1 0.25 0.25 0.333333 1 0.185695 0.5 1 1 1 1 1 1 1 1 0.223607 0.0434783 0.0302475 0.185695 0.333333 0.166667 0.447214 1 1 0.333333 1 0.27735 1 1 0.333333 1 1 0.5 1 0.0333148 0.196116 1 1 1 0.0293991 1 1 1 0.333333 0.0178571 1 0.0769231 0.25 0.5 0.5 1 1 1 1 1 0.2 0.5 1 1 0.2 1 1 0.0188679 0.124035 0.0614295 0.034401 0.0300828 0.0372678 0.0166667 0.0242536 0.0232495 0.5 0.027027 0.5 0.5 0.00750629 1 0.447214 0.010101 0.0196078 1 1 0.0833333 0.166667 0.0588235 0.5 0.0333333 0.333333 0.316228 0.0909091 1 1 1 0.0285598 0.030303 0.25 0.05 0.333333 0.0277778 0.166667 0.015873 1 1 1 1 0.0227273 1 0.125 0.1 0.5 0.047619 0.0434783 0.5 0.0909091 0.5 0.0451754 0.25 0.2 0.0526316 0.0714286 0.5 1 1 0.25 0.25 0.333333 0.2 0.111111 0.5 1 0.0333333 0.25 0.142857 1 0.0384615 0.0666667 0.25 0.5 0.0821995 0.25 0.05 0.25 0.2 0.2 0.5 0.0714286 0.0232558 1 0.111111 0.25 0.0909091 0.0294118 1 0.166667 0.166667 0.25 0.125 0.0909091 0.5 0.5 0.353553 1 0.333333 1 0.333333 0.03125 1 0.5 1 1 0.142857 0.0416667 0.333333 1 0.125 1 0.0714286 0.166667 0.25 0.2 0.0769231 0.5 0.333333 0.142857 1 0.25 0.25 0.25 0.2 0.2 0.5 0.5 0.166667 1 0.2 1 0.5 0.0760286 0.5 0.5 0.25 0.2 0.142857 0.0666667 0.2 0.25 0.333333 0.333333 0.25 0.5 0.166667 0.5 0.5 1 1 1 1 1 0.5 0.333333 0.25 1 1 0.333333 1 1 0.333333 0.333333 1 0.5 1 0.185695 0.333333 0.333333 1 0.707107 1 1 0.707107 1 1 1 1 1 1 1 0.25 0.0769231 0.2 0.5 0.5 0.5 1 0.5 0.111111 1 0.142857 0.0833333 0.0833333 0.111111 0.166667 1 0.5 0.1 0.142857 0.5 0.333333 1 0.5 1 1 1 1 1 1 0.5 1 1 0.5 1 1 0.2 1 1 1 0.5 1 1 0.5 1 1 1 1 1 1 1 1 1 1 1 1 0.5 1 1 1 1 0.25 1 
+
+Document Length Normalisation
+0.136474 0.0708344 0.0570213 0.128618 
+
+Matrice Normalizata
+0.00715517   0.00222825   0.0568014   0.00809191   
+0.0230684   0.0359196   0.0481918   0   
+0.136474   0   0   0   
+0.0557155   0   0.0232788   0.105016   
+0.010989   0.0215469   0.0540761   0.00517817   
+0.111431   0   0.0232788   0.052508   
+0.0191717   0.0127938   0.0549275   0.018068   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.063246   0.0287233   0.0363347   0.0596051   
+0.136474   0   0   0   
+0.103165   0.0267729   0.021552   0.048613   
+0.136474   0   0   0   
+0.136474   0   0   0   
+0.00698264   0.0398662   0.0466794   0.0131613   
+0.136474   0   0   0   
+0.0610332   0   0   0.115039   
+0.136474   0   0   0   
+0.0741349   0.0320652   0.0309748   0.0582226   
+0.0893435   0.0309147   0.0248861   0.0561334   
+0.136474   0   0   0   
+0.136474   0   0   0   
+0.136474   0   0   0   
+0.0370458   0.0494431   0.035379   0.0299255   
+0.0217312   0.013535   0.0544778   0.0204801   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0138241   0.0387458   0.0467852   0.0169368   
+0.0181099   0.0433054   0.0440486   0.0140196   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0393968   0.0613444   0.0164606   0.0371288   
+0.0575427   0.0522662   0.0180317   0.05423   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.136474   0   0   0   
+0.136474   0   0   0   
+0.0893435   0.0309147   0.0248861   0.0561334   
+0.136474   0   0   0   
+0.0330999   0.0687195   0   0   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0374924   0.0583791   0.0156649   0.0530011   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0515825   0.0535458   0.021552   0.048613   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0505963   0.0280117   0.0422799   0.0508624   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0638925   0.0331622   0.0333692   0.0602143   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0120043   0.0685365   0.012539   0.0113132   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0448725   0.0232902   0.0468712   0.0422893   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0300507   0.0311944   0.0470838   0.0354009   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.00486479   0.00252497   0.0569125   0.00458473   
+0.0515825   0.0267729   0.043104   0.048613   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0259115   0.0209204   0.0517254   0.0298464   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0515825   0.0535458   0.021552   0.048613   
+0.086314   0.0223998   0.0360634   0.0406725   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0515825   0.0267729   0.043104   0.048613   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0218534   0.0113426   0.0547843   0.0205953   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0374924   0.0194597   0.0469948   0.0530011   
+0.0595623   0.0309147   0.0373292   0.0561334   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0515825   0.0267729   0.043104   0.048613   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0515825   0.0267729   0.043104   0.048613   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0515825   0.0267729   0.043104   0.048613   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0393968   0.0204481   0.0493819   0.0371288   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.00645502   0.0703574   0.00539403   0.00608342   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0237084   0.00136727   0.0561327   0.00248262   
+0.0515825   0.0267729   0.043104   0.048613   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.0682372   0.0354172   0.0285106   0.0643089   
+0.123446   0   0.0171926   0.0387797   
+0.110311   0.00817925   0.026337   0.0445545   
+0.136474   0   0   0   
+0.0426853   0.066465   0.00594488   0.0134093   
+0.0411486   0.0640721   0.0171926   0   
+0.096502   0   0.0403201   0   
+0.136474   0   0   0   
+0.0610332   0   0.0510014   0   
+0.0119011   0.0648591   0.0223762   0   
+0.00758192   0.0590287   0.0310449   0.0100036   
+0.0212562   0   0.0562475   0.00667751   
+0.0954129   0   0.0398651   0.0192686   
+0.00191488   0.00596328   0.0564047   0.0153394   
+0.0109443   0.0028402   0.0434405   0.0825137   
+0.122066   0.0316781   0   0   
+0.00757024   0   0.0569335   0   
+0.0446081   0.0555671   0.0298208   0.00840801   
+0.0123558   0.0705435   0   0   
+0.136474   0   0   0   
+0.136474   0   0   0   
+0.136474   0   0   0   
+0.00177225   0   0.0570165   0   
+0.012782   0.053074   0.0373837   0   
+0.00907815   0   0.056895   0   
+0.0400703   0   0.0535745   0.0226581   
+0.136474   0   0   0   
+0.136474   0   0   0   
+0.0330999   0   0.0553188   0   
+0.00186076   0.00676054   0.0567543   0.00087682   
+0.00556575   0   0.0569738   0   
+0.136474   0   0   0   
+0.105713   0.0365787   0.0147228   0.033209   
+0.0330999   0   0.0553188   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0500875   0.0403201   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0518071   0.0388866   0   
+0   0.0708344   0   0   
+0   0.0706088   0.00454717   0   
+0   0.0702874   0.00707262   0   
+0   0.0708344   0   0   
+0   0.0295135   0.051836   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0500875   0.0403201   0   
+0   0.0500875   0.0403201   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.010168   0.056127   0.0131876   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0687195   0.0138297   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0694588   0   0.025224   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.00782235   0.0566725   0   
+0   0.0708344   0   0   
+0   0.0704012   0.00629694   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0223998   0.0540951   0   
+0   0.0633562   0.0255007   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0171799   0.0553188   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0316781   0.0510014   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.027903   0.0524108   0   
+0   0.0708344   0   0   
+0   0.0203541   0.0546165   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.068109   0.0156649   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0500875   0.0403201   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.04057   0.0461063   0.017333   
+0   0.0633562   0.0255007   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0657681   0.0211772   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0316781   0.0510014   0   
+0   0.0708344   0   0   
+0   0.00428513   0.0569168   0   
+0   0.0657681   0.0211772   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0316781   0.0510014   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0392919   0.0474446   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.00235984   0.0569896   0   
+0   0.0138918   0.055914   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.00208246   0.0569966   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0.0708344   0   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0565809   0.0159531   
+0   0   0.0560446   0.0237028   
+0   0   0.0568861   0.00884918   
+0   0   0.0566069   0.0154768   
+0   0   0.0510014   0.0575197   
+0   0   0.0570213   0   
+0   0   0.0553188   0.0311944   
+0   0   0.0570058   0.0029903   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0564984   0.017378   
+0   0   0.0570213   0   
+0   0   0.0510014   0.0575197   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0540951   0.0406725   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.056998   0.0036733   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0540951   0.0406725   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0562454   0.0211446   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0403201   0.0909466   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.00867049   0.127122   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0211772   0.119419   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0403201   0.0909466   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0403201   0.0909466   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0.0570213   0   
+0   0   0   0.128618   
+0   0   0   0.128618   
+0   0   0   0.128618   
+0   0   0   0.128618   
+0   0   0   0.128618   
+0   0   0   0.128618   
+0   0   0   0.128618   
+0   0   0   0.128618   
+0   0   0   0.128618   
+0   0   0   0.128618   
+0   0   0   0.128618   
+0   0   0   0.128618   
+0   0   0   0.128618   
+0   0   0   0.128618   
+0   0   0   0.128618   
+0   0   0   0.128618   
+0   0   0   0.128618   
+0   0   0   0.128618   
+0   0   0   0.128618   
+0   0   0   0.128618   
+0   0   0   0.128618   
+0   0   0   0.128618   
+0   0   0   0.128618   
+0   0   0   0.128618   
+0   0   0   0.128618   
+0   0   0   0.128618   
+0   0   0   0.128618   
+
+
+
+Aplicare SVD
+
+Matricea U
+-0.0240   0.0009   0.0254   -0.0461   
+-0.0350   -0.0205   0.0428   -0.0142   
+-0.0566   -0.1419   -0.0583   0.0109   
+-0.0727   0.0458   -0.0659   -0.0134   
+-0.0295   -0.0041   0.0380   -0.0301   
+-0.0745   -0.0640   -0.0623   -0.0099   
+-0.0357   -0.0008   0.0218   -0.0360   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0701   -0.0041   -0.0172   -0.0047   
+-0.0566   -0.1419   -0.0583   0.0109   
+-0.0772   -0.0567   -0.0381   0.0095   
+-0.0566   -0.1419   -0.0583   0.0109   
+-0.0566   -0.1419   -0.0583   0.0109   
+-0.0345   0.0096   0.0449   -0.0112   
+-0.0566   -0.1419   -0.0583   0.0109   
+-0.0720   0.0501   -0.0861   0.0071   
+-0.0566   -0.1419   -0.0583   0.0109   
+-0.0735   -0.0165   -0.0216   0.0030   
+-0.0768   -0.0345   -0.0312   0.0086   
+-0.0566   -0.1419   -0.0583   0.0109   
+-0.0566   -0.1419   -0.0583   0.0109   
+-0.0566   -0.1419   -0.0583   0.0109   
+-0.0533   -0.0042   0.0241   0.0079   
+-0.0378   -0.0010   0.0197   -0.0348   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0385   0.0061   0.0392   -0.0114   
+-0.0397   -0.0008   0.0407   -0.0056   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0552   0.0016   0.0177   0.0326   
+-0.0674   -0.0013   -0.0048   0.0267   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0566   -0.1419   -0.0583   0.0109   
+-0.0566   -0.1419   -0.0583   0.0109   
+-0.0768   -0.0345   -0.0312   0.0086   
+-0.0566   -0.1419   -0.0583   0.0109   
+-0.0349   -0.0279   0.0362   0.0505   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0597   0.0189   0.0076   0.0313   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0641   -0.0005   0.0036   0.0240   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0629   0.0004   -0.0045   -0.0115   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0711   -0.0038   -0.0162   0.0009   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0344   0.0053   0.0460   0.0382   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0570   -0.0026   0.0014   -0.0193   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0505   0.0068   0.0173   -0.0153   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0217   -0.0002   0.0285   -0.0462   
+-0.0623   -0.0030   -0.0042   -0.0130   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0448   0.0046   0.0170   -0.0268   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0641   -0.0005   0.0036   0.0240   
+-0.0700   -0.0474   -0.0220   -0.0074   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0623   -0.0030   -0.0042   -0.0130   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0373   -0.0012   0.0182   -0.0366   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0571   0.0153   -0.0037   -0.0224   
+-0.0682   -0.0035   -0.0117   -0.0044   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0623   -0.0030   -0.0042   -0.0130   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0623   -0.0030   -0.0042   -0.0130   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0623   -0.0030   -0.0042   -0.0130   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0525   -0.0023   0.0058   -0.0239   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0284   0.0060   0.0485   0.0450   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0281   -0.0220   0.0203   -0.0449   
+-0.0623   -0.0030   -0.0042   -0.0130   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0738   -0.0040   -0.0212   0.0071   
+-0.0721   -0.0900   -0.0636   -0.0040   
+-0.0742   -0.0699   -0.0500   -0.0070   
+-0.0566   -0.1419   -0.0583   0.0109   
+-0.0454   -0.0248   0.0267   0.0449   
+-0.0419   -0.0366   0.0387   0.0333   
+-0.0521   -0.1003   -0.0192   -0.0266   
+-0.0566   -0.1419   -0.0583   0.0109   
+-0.0406   -0.0634   0.0018   -0.0385   
+-0.0316   -0.0061   0.0546   0.0271   
+-0.0347   0.0077   0.0517   0.0155   
+-0.0284   -0.0154   0.0182   -0.0461   
+-0.0593   -0.0801   -0.0290   -0.0259   
+-0.0258   0.0138   0.0264   -0.0434   
+-0.0519   0.0704   -0.0219   -0.0326   
+-0.0603   -0.1239   -0.0290   0.0318   
+-0.0202   -0.0077   0.0279   -0.0479   
+-0.0479   -0.0327   0.0336   0.0170   
+-0.0268   -0.0061   0.0464   0.0501   
+-0.0566   -0.1419   -0.0583   0.0109   
+-0.0566   -0.1419   -0.0583   0.0109   
+-0.0566   -0.1419   -0.0583   0.0109   
+-0.0178   -0.0017   0.0304   -0.0484   
+-0.0328   -0.0081   0.0539   0.0062   
+-0.0208   -0.0093   0.0273   -0.0477   
+-0.0419   -0.0192   0.0004   -0.0420   
+-0.0566   -0.1419   -0.0583   0.0109   
+-0.0566   -0.1419   -0.0583   0.0109   
+-0.0303   -0.0343   0.0161   -0.0444   
+-0.0202   -0.0003   0.0348   -0.0434   
+-0.0194   -0.0057   0.0288   -0.0481   
+-0.0566   -0.1419   -0.0583   0.0109   
+-0.0730   -0.0736   -0.0277   0.0220   
+-0.0303   -0.0343   0.0161   -0.0444   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0275   0.0049   0.0587   0.0006   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0276   0.0050   0.0592   0.0030   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0231   0.0067   0.0542   0.0453   
+-0.0237   0.0067   0.0553   0.0429   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0246   0.0029   0.0500   -0.0236   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0275   0.0049   0.0587   0.0006   
+-0.0275   0.0049   0.0587   0.0006   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0253   0.0141   0.0313   -0.0405   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0253   0.0066   0.0579   0.0361   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0316   0.0315   0.0377   0.0489   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0194   0.0009   0.0367   -0.0428   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0235   0.0067   0.0550   0.0437   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0231   0.0023   0.0460   -0.0305   
+-0.0271   0.0061   0.0603   0.0224   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0219   0.0018   0.0428   -0.0351   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0250   0.0031   0.0511   -0.0214   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0243   0.0028   0.0491   -0.0252   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0226   0.0021   0.0448   -0.0323   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0256   0.0065   0.0584   0.0341   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0275   0.0049   0.0587   0.0006   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0333   0.0211   0.0459   -0.0107   
+-0.0271   0.0061   0.0603   0.0224   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0266   0.0063   0.0597   0.0278   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0250   0.0031   0.0511   -0.0214   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0184   0.0005   0.0343   -0.0455   
+-0.0266   0.0063   0.0597   0.0278   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0250   0.0031   0.0511   -0.0214   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0263   0.0039   0.0547   -0.0130   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0178   0.0003   0.0329   -0.0469   
+-0.0210   0.0014   0.0408   -0.0379   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0177   0.0003   0.0327   -0.0471   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0218   0.0068   0.0519   0.0493   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0234   0.0159   0.0226   -0.0479   
+-0.0264   0.0235   0.0183   -0.0473   
+-0.0206   0.0089   0.0265   -0.0483   
+-0.0232   0.0154   0.0229   -0.0479   
+-0.0386   0.0569   -0.0021   -0.0423   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0292   0.0309   0.0140   -0.0465   
+-0.0183   0.0031   0.0296   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0240   0.0173   0.0218   -0.0478   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0386   0.0569   -0.0021   -0.0423   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0327   0.0403   0.0084   -0.0453   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0186   0.0037   0.0293   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0327   0.0403   0.0084   -0.0453   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0254   0.0210   0.0197   -0.0475   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0490   0.0899   -0.0254   -0.0326   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0542   0.1255   -0.0616   -0.0050   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0549   0.1179   -0.0508   -0.0158   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0490   0.0899   -0.0254   -0.0326   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0490   0.0899   -0.0254   -0.0326   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0171   0.0001   0.0312   -0.0485   
+-0.0522   0.1270   -0.0672   0.0024   
+-0.0522   0.1270   -0.0672   0.0024   
+-0.0522   0.1270   -0.0672   0.0024   
+-0.0522   0.1270   -0.0672   0.0024   
+-0.0522   0.1270   -0.0672   0.0024   
+-0.0522   0.1270   -0.0672   0.0024   
+-0.0522   0.1270   -0.0672   0.0024   
+-0.0522   0.1270   -0.0672   0.0024   
+-0.0522   0.1270   -0.0672   0.0024   
+-0.0522   0.1270   -0.0672   0.0024   
+-0.0522   0.1270   -0.0672   0.0024   
+-0.0522   0.1270   -0.0672   0.0024   
+-0.0522   0.1270   -0.0672   0.0024   
+-0.0522   0.1270   -0.0672   0.0024   
+-0.0522   0.1270   -0.0672   0.0024   
+-0.0522   0.1270   -0.0672   0.0024   
+-0.0522   0.1270   -0.0672   0.0024   
+-0.0522   0.1270   -0.0672   0.0024   
+-0.0522   0.1270   -0.0672   0.0024   
+-0.0522   0.1270   -0.0672   0.0024   
+-0.0522   0.1270   -0.0672   0.0024   
+-0.0522   0.1270   -0.0672   0.0024   
+-0.0522   0.1270   -0.0672   0.0024   
+-0.0522   0.1270   -0.0672   0.0024   
+-0.0522   0.1270   -0.0672   0.0024   
+-0.0522   0.1270   -0.0672   0.0024   
+-0.0522   0.1270   -0.0672   0.0024   
+
+Vectorul Sigma
+1.3852 0.6960 0.8803 0.9066 
+
+Matricea V
+-0.5741   -0.7237   -0.3761   0.0726   
+-0.4260   0.0664   0.6445   0.6314   
+-0.4151   0.0015   0.4816   -0.7718   
+-0.5627   0.6869   -0.4596   0.0172   
+
+
+FILE BY FILE MATRIX
+1.0000   0.2959   0.2703   0.5140   
+0.2959   1.0000   0.1794   0.2615   
+0.2703   0.1794   1.0000   0.2663   
+0.5140   0.2615   0.2663   1.0000   
+Finalizare EXECUTIE
+Finalizare memory cleanup
